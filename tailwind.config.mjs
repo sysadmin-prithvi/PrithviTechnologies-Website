@@ -24,11 +24,15 @@ export default {
         500: "#e14d0b",
       }, // Primary colors, used mainly for links, buttons and svg icons
       red: colors.red, // Used for bookmark icon
-      zinc: colors.zinc, // Used mainly for box-shadow
+      zinc: colors.zinc,
+      darkBlue:"#141d30",
+      whiteText:"#ebedef",
+      borderBlue:"#334155"
+      // Used mainly for box-shadow
     },
     extend: {
       animation: {
-        'infinite-scroll': 'infinite-scroll 10s linear infinite',
+        'infinite-scroll': 'infinite-scroll 50s linear infinite',
       },
       keyframes: {
         'infinite-scroll': {

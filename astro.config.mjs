@@ -8,6 +8,7 @@ import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
+  base:"https://sysadmin-prithvi.github.io/PrithviTechnologies-Website/",
   // https://docs.astro.build/en/guides/images/#authorizing-remote-images
   site: "https://screwfast.uk",
   image: {
