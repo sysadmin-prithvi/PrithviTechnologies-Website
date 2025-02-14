@@ -13,10 +13,8 @@ export default defineConfig({
   // base:"https://sysadmin-prithvi.github.io/PrithviTechnologies-Website/",
 
   // https://docs.astro.build/en/guides/images/#authorizing-remote-images
-  // site: "https://screwfast.uk",
-  output: 'server',
-  adapter: vercel(),
-
+  site: "https://sysadmin-prithvi.github.io/PrithviTechnologies-Website/",
+ 
   image: {
     domains: ["images.unsplash.com"],
   },
