@@ -6,14 +6,21 @@ import starlight from "@astrojs/starlight";
 
 import mdx from "@astrojs/mdx";
 
+import vercel from "@astrojs/vercel";
+
 // https://astro.build/config
 export default defineConfig({
-  base:"https://sysadmin-prithvi.github.io/PrithviTechnologies-Website/",
+  // base:"https://sysadmin-prithvi.github.io/PrithviTechnologies-Website/",
+
   // https://docs.astro.build/en/guides/images/#authorizing-remote-images
-  site: "https://screwfast.uk",
+  // site: "https://screwfast.uk",
+  output: 'server',
+  adapter: vercel(),
+
   image: {
     domains: ["images.unsplash.com"],
   },
+
   // i18n: {
   //   defaultLocale: "en",
   //   locales: ["en", "fr"],
@@ -25,6 +32,7 @@ export default defineConfig({
   //   },
   // },
   prefetch: true,
+
   integrations: [tailwind(), sitemap({
     i18n: {
       defaultLocale: "en", // All urls that don't contain `fr` after `https://screwfast.uk/` will be treated as default locale, i.e. `en`
@@ -115,7 +123,10 @@ export default defineConfig({
     gzip: false,
     brotli: true,
   }), mdx()],
+
   experimental: {
     clientPrerender: true,
   },
+
+  adapter: vercel(),
 });
