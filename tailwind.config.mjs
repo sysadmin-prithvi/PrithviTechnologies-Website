@@ -27,7 +27,8 @@ export default {
       zinc: colors.zinc,
       darkBlue:"#141d30",
       whiteText:"#ebedef",
-      borderBlue:"#334155"
+      borderBlue:"#334155",
+      indigoBlue:"#0f172a00"
       // Used mainly for box-shadow
     },
     extend: {

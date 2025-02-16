@@ -162,5 +162,59 @@ const services = [
            </li>
       </ul>
   </div>
+  
+  
+ <div class="h-[30rem] w-full  bg-indigoBlue flex  justify-center items-center  relative space-x-10 rounded-md p-10" style="background-color:#0f172a;">
+  <!-- <div> -->
+   <div class="flex flex-row justify-center  h-[25rem] w-[80rem] border overflow-hidden ">
+        <!-- <div class="overflow-auto border "> -->
+          <div id="scrollableDiv" class="overflow-y-auto space-y-5 ">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-100  ">Collaborative Editing</h2>
+              <p class="text-kg text-gray-300 max-w-sm mt-10" style="opacity: 1;">
+                Work together in real time with your team, clients, and stakeholders. Collaborate on documents, share ideas, and make decisions quickly. With our platform, you can streamline your workflow and increase productivity.
+              </p>
+            </div>
+            <div >
+              <h2 class="text-2xl font-bold text-gray-100 ">Real time changes</h2>
+              <p class="text-kg text-gray-300 max-w-sm mt-10">
+                See changes as they happen. With our platform, you can track every modification in real time. No more confusion about the latest version of your project. Say goodbye to the chaos of version control and embrace the simplicity of real-time updates.</p>
+            </div>
+            <div>
+                  <h2 class="text-2xl font-bold text-gray-100">Running out of content</h2>
+                  <p class="text-kg text-gray-300 max-w-sm mt-10" >
+                    Experience real-time updates and never stress about version control again. Our platform ensures that you're always working on the most recent version of your project, eliminating the need for constant manual updates. Stay in the loop, keep your team aligned, and maintain the flow of your work without any interruptions.</p>
+            </div>
+            </div>
+     </div>
+   </div>
+     
+ </div>
        
 </MainLayout>
+
+<style>
+   #scrollableDiv {
+            scrollbar-width: none; /* Firefox */
+        }
+        #scrollableDiv::-webkit-scrollbar {
+            display: none; /* Chrome, Safari */
+        }
+</style>
+<script is:inline>
+    const scrollableDiv = document.getElementById("scrollableDiv");
+
+        scrollableDiv.addEventListener("mouseenter", () => {
+            document.body.style.overflow = "hidden"; // Disable page scroll
+        });
+
+        scrollableDiv.addEventListener("mouseleave", () => {
+            document.body.style.overflow = "auto"; // Enable page scroll when mouse leaves
+        });
+
+        scrollableDiv.addEventListener("wheel", (e) => {
+            // Scroll the div manually
+            scrollableDiv.scrollTop += e.deltaY;
+            e.preventDefault(); // Prevent page scrolling
+        });
+    </script>

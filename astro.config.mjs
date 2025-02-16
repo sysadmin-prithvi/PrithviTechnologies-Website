@@ -14,7 +14,7 @@ export default defineConfig({
 
   // https://docs.astro.build/en/guides/images/#authorizing-remote-images
   site: "https://sysadmin-prithvi.github.io/PrithviTechnologies-Website/",
-  base:"/PrithviTechnologies-Website",
+  // base:"/PrithviTechnologies-Website",
   image: {
     domains: ["images.unsplash.com"],
   },
