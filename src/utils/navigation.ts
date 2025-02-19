@@ -1,11 +1,11 @@
 // An array of links for navigation bar
 const navBarLinks = [
   { name: "Home", url: "/PrithviTechnologies-Website" },
-  { name: "Products", url: "/PrithviTechnologies-Website/" },
+  // { name: "Products", url: "/PrithviTechnologies-Website/" },
   { name: "Services", url: "/PrithviTechnologies-Website/services" },
-  { name: "Blog", url: "/PrithviTechnologies-Website/" },
-  { name: "Contact", url: "/PrithviTechnologies-Website/contact" },
-  { name: "ResourceHub", url: "/PrithviTechnologies-Website/resourceHub" },
+  // { name: "Blog", url: "/PrithviTechnologies-Website/" },
+  // { name: "Contact", url: "/PrithviTechnologies-Website/contact" },
+  // { name: "ResourceHub", url: "/PrithviTechnologies-Website/resourceHub" },
   
 ];
 // An array of links for footer

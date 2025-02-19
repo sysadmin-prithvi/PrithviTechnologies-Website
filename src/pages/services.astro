@@ -52,7 +52,7 @@ const pageTitle: string = `Services | ${SITE.title}`;
         Empowering Your Buisness with comprehensive Data Annotation Services
       </h1>
     </div>
-    <div class="bg-indigoBlue h-[30em] flex-row">
+    <div class="bg-indigoBlue h-[30em] flex-row mt-[5rem]">
     <div class="flex justify-center items-center bg-indigoBlue ">
       <div class="flex flex-row space-x-2 gap-10 lg:text-2xl tabs justify-center items-center  border-b-2 border-white w-fit ">
         <button id='image-button' class="text-gray-300 p-6 tab-links tab-button" onclick="getAnnotation(Event,'image',id)">Image Annotation</button> 
@@ -62,10 +62,10 @@ const pageTitle: string = `Services | ${SITE.title}`;
       </div> 
     </div> 
 
-    <div class="flex flex-row mx-[25rem]">
+    <div class="flex flex-row mx-[25rem] mt-[2rem]">
 
       <div class="h-[22rem] w-1/2 py-2">
-        <div class="tab-content " id="image">
+        <div class="tab-content  space-y-6" id="image">
           <div>
             <h1 class="text-2xl text-white">Bounding Box Annotation</h1>
             <p class="text-1xl text-white">Detect and classify objects in images</p>
@@ -83,7 +83,7 @@ const pageTitle: string = `Services | ${SITE.title}`;
             <p class="text-1xl text-white">Adds descriptive tags to an image</p>
           </div>
           </div>
-          <div class="tab-content" id="text" style="display:none">
+          <div class="tab-content space-y-6" id="text" style="display:none">
             <div>
               <h1 class="text-2xl text-white">Entity Annotation</h1>
               <p class="text-1xl text-white">Detect and classify objects in images</p>
@@ -97,13 +97,13 @@ const pageTitle: string = `Services | ${SITE.title}`;
               <p class="text-1xl text-white">Mark Specific points of interest in am image</p>
             </div>
             </div> 
-            <div class="tab-content" id="audio" style="display:none">
+            <div class="tab-content flex space-y-6" id="audio" style="display:none">
               <div>
                 <h1 class="text-2xl text-white">Speech-To-Text Transition  </h1>
                 <p class="text-1xl text-white">Convert spoken words into text </p>
               </div>
               <div>
-                <h1 class="text-2xl text-white">Audio Classification</h1>
+                <h1 class="text-2xl text-white ">Audio Classification</h1>
                 <p class="text-1xl text-white">Categorize audio into predefined classes</p>
               </div>
               <div>
@@ -117,7 +117,7 @@ const pageTitle: string = `Services | ${SITE.title}`;
               </div>
               </div>
               
-              <div class="tab-content" id="video" style="display:none">
+              <div class="tab-content flex  space-y-6" id="video" style="display:none">
                 <div>
                   <h1 class="text-2xl text-white">Frame-by-Frame Annotation</h1>
                   <p class="text-1xl text-white">Annotate each frame as a standalone image</p>
@@ -225,23 +225,23 @@ const pageTitle: string = `Services | ${SITE.title}`;
 
     <div class="h-[35rem] grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 lg:grid-rows-2  gap-8 lg:py-[2rem] lg:px-[20rem] mt-[2rem]">
         
-          <div  class="border bg-indigoBlue flex justify-center items-center grid-set">
-              <h1 class="text-white text-3xl">Bias Elimination</h1>
+          <div  class="border bg-indigoBlue text-bl flex justify-center items-center grid-set">
+              <h1 class=" text-3xl  font-bold">Bias Elimination</h1>
           </div>
-          <div class="border bg-indigoBlue flex justify-center items-center grid-set ">
-            <h1 class="text-white text-3xl">Competitive Pricing</h1>
+          <div class="border bg-indigoBlue text-bl font-bold flex justify-center items-center grid-set ">
+            <h1 class=" text-3xl">Competitive Pricing</h1>
           </div>
-          <div class="border bg-indigoBlue flex justify-center items-center grid-set">
-            <h1 class="text-white text-3xl">Team of Experts</h1>
+          <div class="border bg-indigoBlue text-bl font-bold flex justify-center items-center grid-set">
+            <h1 class="text-3xl">Team of Experts</h1>
           </div>
-          <div class="border bg-indigoBlue flex justify-center items-center grid-set">
-            <h1 class="text-white text-3xl">Scalability</h1>
+          <div class="border bg-indigoBlue text-bl font-bold flex justify-center items-center grid-set">
+            <h1 class="text-3xl">Scalability</h1>
           </div>
-          <div class="border bg-indigoBlue flex justify-center items-center grid-set">
-            <h1 class="text-white text-3xl">Reliability</h1>
+          <div class="border bg-indigoBlue text-bl font-bold flex justify-center items-center grid-set">
+            <h1 class=" text-3xl">Reliability</h1>
           </div>
-          <div class="border bg-indigoBlue flex justify-center items-center grid-set">
-            <h1 class="text-white text-3xl">Data Security</h1>
+          <div class="border bg-indigoBlue text-bl font-bold flex justify-center items-center grid-set">
+            <h1 class="text-3xl">Data Security</h1>
           </div>
       </div>
     
@@ -256,14 +256,18 @@ const pageTitle: string = `Services | ${SITE.title}`;
     .tab{
       overflow:hidden;
     }
+    button:hover{
+      background-color: rgb(33, 56, 77);
+
+    }
     .tab-button{
       cursor: pointer;
-      tansition:0.3s;
+      /* tansition:0.3s; */
       
     }
     .tab-button:hover{
       /* border: 2px solid rgb(97, 86, 86); */
-      border-radius: 5px;
+      border-radius: 10px;
       background-color: rgb(33, 56, 77);
 
     }
@@ -304,7 +308,7 @@ const pageTitle: string = `Services | ${SITE.title}`;
     }
     
     .grid-set{
-    background: linear-gradient(#0f172a, #0f172a 50%, #7d6eeb 0,#7d6eeb);
+    background: linear-gradient(#0f172a, #0f172a 50%, #fd0 0,#fd0);
     background-size: 100% 200%;
     cursor: pointer;
    
@@ -312,10 +316,20 @@ const pageTitle: string = `Services | ${SITE.title}`;
     transition: background .5s cubic-bezier(.19,1,.22,1);
     width: 100%;
 }
+
 .grid-set:hover {
     background-position: 0 100%;
+    color:rgb(12, 12, 12)
 }
-    
+.text-bl{
+  color: #f3f5f7;
+}
+   
+.text-bl:hover {
+    /* background-position: 0 100%; */
+    color:rgb(12, 12, 12)
+}
+
 
 
   </style>
