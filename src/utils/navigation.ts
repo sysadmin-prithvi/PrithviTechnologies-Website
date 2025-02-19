@@ -1,10 +1,12 @@
 // An array of links for navigation bar
 const navBarLinks = [
-  { name: "Home", url: "/" },
-  { name: "Products", url: "/products" },
-  { name: "Services", url: "/services" },
-  { name: "Blog", url: "/blog" },
-  { name: "Contact", url: "/contact" },
+  { name: "Home", url: "/PrithviTechnologies-Website" },
+  { name: "Products", url: "/PrithviTechnologies-Website/products" },
+  { name: "Services", url: "/PrithviTechnologies-Website/services" },
+  { name: "Blog", url: "/PrithviTechnologies-Website/blog" },
+  { name: "Contact", url: "/PrithviTechnologies-Website/contact" },
+  { name: "ResourceHub", url: "/PrithviTechnologies-Website/resourceHub" },
+  
 ];
 // An array of links for footer
 const footerLinks = [

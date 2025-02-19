@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-import colors from "tailwindcss/colors";
+import colors, { violet } from "tailwindcss/colors";
 export default {
   content: [
     "./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
@@ -16,7 +16,7 @@ export default {
       gray: colors.gray,
       indigo: colors.indigo,
       neutral: colors.neutral, // Used mainly for text color
-      yellow: colors.yellow, // Accent colors, used mainly for star color, heading and buttons
+      yellow: colors.yellow,
       orange: {
         ...colors.orange,
         300: "#fb713b",
@@ -28,7 +28,11 @@ export default {
       darkBlue:"#141d30",
       whiteText:"#ebedef",
       borderBlue:"#334155",
-      indigoBlue:"#0f172a00"
+      indigoBlue:"#0f172a",
+      shadyBlue:"#303a54",
+      skyBlue:"#8bc0f1",
+      violet:'#7d6eeb' // Accent colors, used mainly for star color, heading and buttons
+
       // Used mainly for box-shadow
     },
     extend: {
