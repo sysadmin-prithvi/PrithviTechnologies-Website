@@ -3,311 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prithvi Technologies - Services</title>
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: url('https://img.freepik.com/free-vector/gradient-hexagonal-background_79603-1629.jpg?t=st=1739530377~exp=1739533977~hmac=b273e2a397156a9bfbf14fd0ad7ba809376a2aa629da2ea2ca067e747a9c7c52&w=1800') no-repeat center center fixed;
-            background-size: cover;
-            color: #ffffff;
-            padding-left: 20%;
-        }
-
-        header {
-            padding: 60px 20px;
-            text-align: center;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-
-        .tabs {
-            margin-top: 40px;
-        }
-
-        .tab-inputs {
-            display: none;
-        }
-
-        .tab-labels {
-            display: flex;
-            border-bottom: 1px solid #333;
-            margin-bottom: 20px;
-        }
-
-        .tab-label {
-            padding: 10px 20px;
-            cursor: pointer;
-            color: #888;
-        }
-
-        .tab-content {
-            display: none;
-            padding: 20px;
-            background: #222;
-            border-radius: 8px;
-        }
-
-        .service-item {
-            border-bottom: 1px solid #333;
-            padding: 15px 0;
-        }
-
-        .service-item:last-child {
-            border-bottom: none;
-        }
-
-        .service-item h3 {
-            color: #00b894;
-            margin: 0 0 10px 0;
-        }
-
-        #tab1:checked ~ .tab-labels .label1,
-        #tab2:checked ~ .tab-labels .label2,
-        #tab3:checked ~ .tab-labels .label3,
-        #tab4:checked ~ .tab-labels .label4 {
-            color: #00b894;
-            border-bottom: 2px solid #00b894;
-        }
-
-        #tab1:checked ~ .tab-contents .content1,
-        #tab2:checked ~ .tab-contents .content2,
-        #tab3:checked ~ .tab-contents .content3,
-        #tab4:checked ~ .tab-contents .content4 {
-            display: block;
-        }
-
-        .process {
-            margin: 40px 0;
-        }
-
-        .process-step {
-            background: #222;
-            padding: 20px;
-            margin: 10px 0;
-            border-radius: 8px;
-        }
-
-        .process-step h3 {
-            color: #00b894;
-            margin: 0 0 10px 0;
-        }
-
-        .differentiators {
-            margin: 40px 0;
-        }
-
-        .differentiators-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .differentiator-card {
-            border: 1px solid #333;
-            padding: 20px;
-            text-align: center;
-            border-radius: 8px;
-            transition: border-color 0.3s;
-        }
-
-        .differentiator-card:hover {
-            border-color: #00b894;
-        }
-
-        .icon {
-            width: 48px;
-            height: 48px;
-            margin: 0 auto 15px;
-        }
-
-        @media (max-width: 768px) {
-            body {
-                padding-left: 5%;
-                padding-right: 5%;
-            }
-
-            .differentiators-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-    </style>
+    <title>Gradient Hover Effect</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+<style>
+    .grid-set {
+    background: #f9f9fb;
+    background: linear-gradient(#f9f9fb, #f9f9fb 50%, #fd0 0, #fd0);
+    background-size: 100% 200%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 477px;
+    padding: 60px 35px;
+    position: relative;
+    transition: background 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    width: 100%;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* Hover Effect */
+.grid-set:hover {
+    background-position: 0 100%;
+}
+
+</style>
 <body>
-    <header>
-        <h1>Prithvi Technologies</h1>
-        <p>Empowering Your Business with Comprehensive Data Annotation services</p>
-        <p>Delivering excellence in Staffing, Recruitment, and Cybersecurity</p>
-    </header>
 
-    <div class="tabs">
-        <input type="radio" name="tabs" id="tab1" class="tab-inputs" checked>
-        <input type="radio" name="tabs" id="tab2" class="tab-inputs">
-        <input type="radio" name="tabs" id="tab3" class="tab-inputs">
-        <input type="radio" name="tabs" id="tab4" class="tab-inputs">
-
-        <div class="tab-labels">
-            <label for="tab1" class="tab-label label1">Image</label>
-            <label for="tab2" class="tab-label label2">Text</label>
-            <label for="tab3" class="tab-label label3">Audio</label>
-            <label for="tab4" class="tab-label label4">Video</label>
-        </div>
-
-        <div class="tab-contents">
-            <div class="tab-content content1">
-                <h2>Image Data</h2>
-                <div class="service-item">
-                    <h3>Bounding Box Annotation</h3>
-                    <p>Object and classify objects in images. (1 shape)</p>
-                </div>
-                <div class="service-item">
-                    <h3>Semantic Segmentation</h3>
-                    <p>Classify each pixel of an image into predefined categories. (1 image)</p>
-                </div>
-                <div class="service-item">
-                    <h3>Keypoint Annotation</h3>
-                    <p>Mark specific parts of the body in an image. (1 image)</p>
-                </div>
-                <div class="service-item">
-                    <h3>Image Tagging</h3>
-                    <p>Add descriptive tags to an image. (5 image)</p>
-                </div>
-            </div>
-
-            <div class="tab-content content2">
-                <h2>Text Data</h2>
-                <div class="service-item">
-                    <h3>Entity Annotation</h3>
-                    <p>Label entities within text</p>
-                </div>
-                <div class="service-item">
-                    <h3>Sentiment Annotation</h3>
-                    <p>Label text data with sentiments</p>
-                </div>
-                <div class="service-item">
-                    <h3>Text Classification</h3>
-                    <p>Categorize text into predefined classes</p>
-                </div>
-                <div class="service-item">
-                    <h3>Topic Classification</h3>
-                    <p>Tag specific categories of each data</p>
-                </div>
-            </div>
-
-            <div class="tab-content content3">
-                <h2>Audio Data</h2>
-                <div class="service-item">
-                    <h3>Speech-to-Text Transcription</h3>
-                    <p>Convert spoken words to text</p>
-                </div>
-                <div class="service-item">
-                    <h3>Audio Classification</h3>
-                    <p>Categorize audio into predefined classes</p>
-                </div>
-                <div class="service-item">
-                    <h3>Acoustic Event Detection</h3>
-                    <p>Detect and classify specific sounds</p>
-                </div>
-                <div class="service-item">
-                    <h3>Time-Stamped Annotation</h3>
-                    <p>Tag specific segments of audio data</p>
-                </div>
-            </div>
-
-            <div class="tab-content content4">
-                <h2>Video Data</h2>
-                <div class="service-item">
-                    <h3>Object Tracking</h3>
-                    <p>Track objects across video frames</p>
-                </div>
-                <div class="service-item">
-                    <h3>Scene Annotation</h3>
-                    <p>Add scene actions with description tags</p>
-                </div>
-                <div class="service-item">
-                    <h3>Pose Estimation</h3>
-                    <p>Mark key joint movements over time</p>
-                </div>
-            </div>
-        </div>
+    <div class="grid-set">
+        <p>Hover Me</p>
     </div>
 
-    <section class="process">
-        <h2>How does it work?</h2>
-        <div class="process-step">
-            <h3>1. Project Management</h3>
-            <p>We oversee your entire project, managing workflow execution and resolving you from time management concerns.</p>
-        </div>
-        <div class="process-step">
-            <h3>2. Tool Selection</h3>
-            <p>Choose the right annotation tool or vendor based on project needs</p>
-        </div>
-        <div class="process-step">
-            <h3>3. Annotators Coordination</h3>
-            <p>We arrange the tasks, annotators, and manage the instructions, time management and costs</p>
-        </div>
-        <div class="process-step">
-            <h3>4. Data Management</h3>
-            <p>We process your raw data, establishing a stream like pipeline to ensure results will be returned on time for you ML Ops</p>
-        </div>
-        <div class="process-step">
-            <h3>5. Quality Check</h3>
-            <p>We have a dedicated team to check the quality of annotations and make sure you get >95% accuracy</p>
-        </div>
-    </section>
-
-    <section class="differentiators">
-        <h2>What sets us apart?</h2>
-        <div class="differentiators-grid">
-            <div class="differentiator-card">
-                <svg class="icon" viewBox="0 0 24 24">
-                    <path d="M12 4c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 14c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z"/>
-                    <circle cx="12" cy="12" r="3"/>
-                </svg>
-                <p>Best attention</p>
-            </div>
-            <div class="differentiator-card">
-                <svg class="icon" viewBox="0 0 24 24">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                </svg>
-                <p>Competitive pricing</p>
-            </div>
-            <div class="differentiator-card">
-                <svg class="icon" viewBox="0 0 24 24">
-                    <circle cx="9" cy="8" r="4"/>
-                    <path d="M3 18c0-3 3-6 6-6s6 3 6 6"/>
-                    <circle cx="17" cy="8" r="3"/>
-                    <path d="M13 18c0-2 2-4 4-4s4 2 4 4"/>
-                </svg>
-                <p>Team of experts</p>
-            </div>
-            <div class="differentiator-card">
-                <svg class="icon" viewBox="0 0 24 24">
-                    <path d="M21 3L3 10.53v.98l6.84 2.65L12.48 21h.98L21 3z"/>
-                </svg>
-                <p>Scalability</p>
-            </div>
-            <div class="differentiator-card">
-                <svg class="icon" viewBox="0 0 24 24">
-                    <path d="M9 12l2 2 4-4"/>
-                    <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
-                </svg>
-                <p>Reliability</p>
-            </div>
-            <div class="differentiator-card">
-                <svg class="icon" viewBox="0 0 24 24">
-                    <path d="M12 2L4 6v12l8 4 8-4V6l-8-4z"/>
-                    <path d="M12 2v20"/>
-                    <path d="M4 6l8 4"/>
-                    <path d="M12 10l8-4"/>
-                </svg>
-                <p>Data security</p>
-            </div>
-        </div>
-    </section>
 </body>
 </html>

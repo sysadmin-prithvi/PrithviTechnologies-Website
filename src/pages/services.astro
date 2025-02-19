@@ -44,6 +44,7 @@ const pageTitle: string = `Services | ${SITE.title}`;
 >
 
 <div>
+  <!-- tablist -->
   <div>
 
     <div>
@@ -216,11 +217,40 @@ const pageTitle: string = `Services | ${SITE.title}`;
     </div>  
   </div>    
   </div>
-      
-  </div>
- </div>
+  <!-- what sets us apart -->
+   <div>
+    <div class="flex justify-center items-center text-4xl font-bold ">
+      <h1 class="text-white text-center mt-[2rem]">What sets us apart ?</h1>
+    </div>
 
-</div>  
+    <div class="h-[35rem] grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 lg:grid-rows-2  gap-8 lg:py-[2rem] lg:px-[20rem] mt-[2rem]">
+        
+          <div  class="border bg-indigoBlue flex justify-center items-center grid-set">
+              <h1 class="text-white text-3xl">Bias Elimination</h1>
+          </div>
+          <div class="border bg-indigoBlue flex justify-center items-center grid-set ">
+            <h1 class="text-white text-3xl">Competitive Pricing</h1>
+          </div>
+          <div class="border bg-indigoBlue flex justify-center items-center grid-set">
+            <h1 class="text-white text-3xl">Team of Experts</h1>
+          </div>
+          <div class="border bg-indigoBlue flex justify-center items-center grid-set">
+            <h1 class="text-white text-3xl">Scalability</h1>
+          </div>
+          <div class="border bg-indigoBlue flex justify-center items-center grid-set">
+            <h1 class="text-white text-3xl">Reliability</h1>
+          </div>
+          <div class="border bg-indigoBlue flex justify-center items-center grid-set">
+            <h1 class="text-white text-3xl">Data Security</h1>
+          </div>
+      </div>
+    
+        
+  </div>
+  </div>
+
+
+  
   </MainLayout>
   <style>
     .tab{
@@ -264,6 +294,8 @@ const pageTitle: string = `Services | ${SITE.title}`;
     .title-font{
       font-family: "Euclidcirculara, sans-serif";
     }
+    
+    
     .number-card{
       color: #7d6eeb;
       font-size: 20px;
@@ -271,6 +303,21 @@ const pageTitle: string = `Services | ${SITE.title}`;
       line-height: 25px;
     }
     
+    .grid-set{
+    background: linear-gradient(#0f172a, #0f172a 50%, #7d6eeb 0,#7d6eeb);
+    background-size: 100% 200%;
+    cursor: pointer;
+   
+    position: relative;
+    transition: background .5s cubic-bezier(.19,1,.22,1);
+    width: 100%;
+}
+.grid-set:hover {
+    background-position: 0 100%;
+}
+    
+
+
   </style>
 
   <script is:inline>
