@@ -45,26 +45,34 @@ const pageTitle: string = `Services | ${SITE.title}`;
 
 <div>
   <!-- tablist -->
-  <div>
+  <div >
 
     <div>
       <h1 class="text-center md:text-6xl mt-[150px]  font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
         Empowering Your Buisness with comprehensive Data Annotation Services
       </h1>
     </div>
-    <div class="bg-indigoBlue h-[30em] flex-row mt-[5rem]">
-    <div class="flex justify-center items-center bg-indigoBlue ">
-      <div class="flex flex-row space-x-2 gap-10 lg:text-2xl tabs justify-center items-center  border-b-2 border-white w-fit ">
-        <button id='image-button' class="text-gray-300 p-6 tab-links tab-button" onclick="getAnnotation(Event,'image',id)">Image Annotation</button> 
-        <button id='text-button' class="text-gray-300 p-6 tab-links tab-button" onclick="getAnnotation(Event,'text',id)">Text Annotation</button>
-        <button id='video-button' class="text-gray-300 p-6 tab-links tab-button" onclick="getAnnotation(Event,'video',id)">Video Annotation</button>
-        <button id='audio-button' class="text-gray-300 p-6 tab-links tab-button" onclick="getAnnotation(Event,'audio',id)">Audio Annotation</button>
+    <div class="bg-indigoBlue lg:h-[30rem] sm:h-[20rem] lg:flex-row sm:flex-col mt-[5rem]">
+    <div class="flex sm:flex-col justify-center items-center bg-indigoBlue ">
+      <div class="flex lg:flex-row flex-col lg:gap-10 lg:text-2xl tabs justify-center items-center  lg:border-b-2 lg:border-white  ">
+        <div>
+          <button id='image-button' class="text-gray-300 p-6 tab-links tab-button" onclick="getAnnotation(Event,'image',id)">Image Annotation</button> 
+          </div>
+        <div>
+          <button id='text-button' class="text-gray-300 p-6 tab-links tab-button" onclick="getAnnotation(Event,'text',id)">Text Annotation</button>
+          </div>
+        <div>
+          <button id='video-button' class="text-gray-300 p-6 tab-links tab-button" onclick="getAnnotation(Event,'video',id)">Video Annotation</button>
+          </div>
+        <div>
+          <button id='audio-button' class="text-gray-300 p-6 tab-links tab-button" onclick="getAnnotation(Event,'audio',id)">Audio Annotation</button>
+          </div>
       </div> 
     </div> 
 
-    <div class="flex flex-row mx-[25rem] mt-[2rem]">
+    <div class="flex flex-row lg:mx-[25rem] sm:mt-[2rem]">
 
-      <div class="h-[22rem] w-1/2 py-2">
+      <div class="h-[22rem] w-1/2 py-2 w-fit ">
         <div class="tab-content  space-y-6" id="image">
           <div>
             <h1 class="text-2xl text-white">Bounding Box Annotation</h1>
@@ -145,6 +153,11 @@ const pageTitle: string = `Services | ${SITE.title}`;
     
 
     </div>
+  </div>
+
+  <div class="annotation-tab">
+
+
   </div>
 
   <div class="mt-[10rem]">
@@ -328,6 +341,11 @@ const pageTitle: string = `Services | ${SITE.title}`;
 .text-bl:hover {
     /* background-position: 0 100%; */
     color:rgb(12, 12, 12)
+}
+@media (max-width: 1024px) { /* Hide for screens smaller than 1024px */
+    .container {
+        display: none;
+    }
 }
 
 
