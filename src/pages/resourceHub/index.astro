@@ -1,6 +1,28 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
 import AnnouncementBanner from "@components/ui/banners/AnnouncementBanner.astro";
+const projects = [
+  {
+    title: "Enhancing Autonomous Vehicle Systems through High-Quality Data Annotation",
+    description: "Discover how our precise polygon and polyline annotation services helped improve the accuracy of autonomous vehicle perception systems.",
+    image: "/PrithviTechnologies-Website/autonomousVehicle.png",
+    link: "/PrithviTechnologies-Website/autonomousVehicles",
+  },
+  {
+    title: "AI-Powered Agricultural Solutions with Annotated Visual Data",
+    description: "Learn how Prithvi Technologies supported an agricultural AI solution with accurate annotation of crops and soil data, enhancing model performance.",
+    image: "/PrithviTechnologies-Website/agriculture.png",
+    link: "/PrithviTechnologies-Website/resourceHub/agriculture-ai",
+  },
+  {
+    title: "Enhancing Medical AI Solutions through Data Annotation",
+    description: "Discover how Prithvi Technologies improved medical AI models with precise annotation of medical images for better diagnostics.",
+    image: "/PrithviTechnologies-Website/medical.png",
+    link: "/PrithviTechnologies-Website/resourceHub/medical-ai",
+  }
+];
+
+
 ---
 <MainLayout>
     
@@ -12,70 +34,103 @@ import AnnouncementBanner from "@components/ui/banners/AnnouncementBanner.astro"
                 </h1>
             </div>
         </div>
-        <div class="flex  sm:flex-col justify-center items-center p-2 bg-neutral-950 h-[40rem] gap-8">
+        <!-- <div class="flex  sm:flex-col justify-center items-center p-2 bg-neutral-950 h-[40rem] gap-8"> -->
             <!-- <div class="relative p-[4px] group"> -->
-            <div class="flex gap-10 ">
+            <!-- <div class="flex gap-10 "> -->
                 
                 
-                <div class=" gradient-border h-[26rem] w-[23rem] rounded-3xl "style="z-index: 1;">
+            <div class="flex flex-wrap gap-6 justify-center">
+              {projects.map((project) => (
+                <a href={project.link} target="_self" class="block">
+                  <div class="gradient-border h-[26rem] lg:w-[22rem] w-[20rem] rounded-3xl" style="z-index: 1;">
                     <div class="inner-box h-full w-full p-10 relative">
-
-                            <img src="/PrithviTechnologies-Website/autonomousVehicle.png" alt="" class="h-[10rem] w-full">
-                            <p class="text-base sm:text-xl text-white mt-4 mb-2 dark:text-neutral-200">Enhancing Autonomous Vehicle Systems through High-Quality Data Annotation</p>
-                            <p class="text-sm text-neutral-300 dark:text-neutral-400">Discover how our precise polygon and polyline annotation services helped improve the accuracy of autonomous vehicle perception systems.</p>
-                        </div>
+                      <img src={project.image} alt={project.title} class="h-[10rem] w-full" />
+                      <p class="text-base sm:text-xl text-white mt-4 mb-2 dark:text-neutral-200">
+                        {project.title}
+                      </p>
+                      <p class="text-sm text-neutral-300 dark:text-neutral-400">
+                        {project.description}
+                      </p>
                     </div>
-                <div class=" gradient-border h-[26rem] w-[23rem] rounded-3xl "style="z-index: 1;">
-                    <div class="inner-box h-full w-full p-10 relative">
-
-                            <img src="/PrithviTechnologies-Website/agriculture.png" alt="" class="h-[10rem] w-full">
-                            <p class="text-base sm:text-xl text-white mt-4 mb-2 dark:text-neutral-200">AI-Powered Agricultural Solutions with Annotated Visual Data</p>
-                            <p class="text-sm text-neutral-300 dark:text-neutral-400">Learn how Prithvi Technologies supported an agricultural AI solution with accurate annotation of crops and soil data, enhancing model performance.</p>
-                        </div>
-                    </div>
-                <div class=" gradient-border h-[26rem] w-[23rem] rounded-3xl "style="z-index: 1;">
-                    <div class="inner-box h-full w-full p-10 relative">
-
-                            <img src="/PrithviTechnologies-Website/medical.png" alt="" class="h-[10rem] w-full">
-                            <p class="text-base sm:text-xl text-white mt-4 mb-2 dark:text-neutral-200">Enhancing Autonomous Vehicle Systems through High-Quality Data Annotation</p>
-                            <p class="text-sm text-neutral-300 dark:text-neutral-400">Discover how our precise polygon and polyline annotation services helped improve the accuracy of autonomous vehicle perception systems.</p>
-                        </div>
-                    </div>
-                            
-            </div>
+                  </div>
+                </a>
+              ))}
+            </div>            
+            // </div>
 
             </div>
         </div>
-        <div class="w-full">
-            <div>
-                <div class="text-gray-300 max-w-4xl mx-auto my-2 text-xl text-center mt-10 relative z-10">
-                    <h1 class="text-left mb-8 mt-8 text-3xl text-gray-100 font-sans font-bold">White Papers &amp; Guides</h1>
-                    <div class="font-sans">
-                        <h1 class="font-bold text-2xl text-left">
-                        The Role of Data Annotation in AI Model Training</h1>
-                        <p class="text-left text-xl mt-2">A comprehensive guide on how annotated data fuels machine learning models and the key types of annotations required for different applications.</p>
-                    </div>
-                    <div class="font-sans mt-6">
-                        <h1 class="font-bold text-2xl text-left">Best Practices for High-Quality Data Annotation</h1>
-                        <p class="text-left text-xl mt-2">Learn best practices for managing data labeling projects, improving accuracy, and scaling annotation processes for AI model development.</p>
-                    </div>
-                        <div class="font-sans mt-6">
-                            <h1 class="font-bold text-2xl text-left">Data Annotation for Autonomous Vehicles</h1>
-                            <p class="text-left text-xl mt-2">A deep dive into how annotation enhances the perception systems of self-driving cars and what types of annotations are critical for success.</p>
-                        </div>
-                        <h1 class="text-left mb-8 mt-8 text-3xl text-gray-100 font-sans font-bold">Webinars &amp; Videos</h1>
-                        <div class="font-sans">
-                            <h1 class="font-bold text-2xl text-left">Streamlining Data Annotation for Faster AI Development</h1>
-                            <p class="text-left text-xl mt-2">Learn how to optimize your data annotation processes to reduce project timelines and improve the quality of your AI model.</p>
-                        </div>
-                        <div class="font-sans mt-6">
-                            <h1 class="font-bold text-2xl text-left">An Introduction to Polygon Annotation for Medical Imaging</h1>
-                            <p class="text-left text-xl mt-2">A step-by-step video tutorial that shows you how we perform polygon annotation for complex shapes in medical imaging.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+        
+        <section class="py-10 px-6 md:px-12">
+          <div class="max-w-4xl mx-auto">
+              <h2 class="text-3xl font-semibold text-white text-center">White Papers & Guides</h2>
+              <div class="flex flex-col gap-6 mt-8">
+                  <a href="/PrithviTechnologies-Website/roleOfDataAI" target="_self" class="flex bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition items-center">
+                      <div class="flex-1">
+                          <h3 class="text-xl font-semibold text-violet">The Role of Data Annotation in AI Model Training</h3>
+                          <p class="text-gray-400 mt-2">A comprehensive guide on how annotated data fuels machine learning models and the key types of annotations required for different applications.</p>
+                      </div>
+                  </a>
+                  <a href="/PrithviTechnologies-Website/hightQualitydocx" class="flex bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition items-center">
+                      <div class="flex-1">
+                          <h3 class="text-xl font-semibold text-violet">Best Practices for High-Quality Data Annotation</h3>
+                          <p class="text-gray-400 mt-2">Learn best practices for managing data labeling projects, improving accuracy, and scaling annotation processes for AI model development.</p>
+                      </div>
+                  </a>
+                  <a href="/PrithviTechnologies-Website/autonomousVehicles" class="flex bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition items-center">
+                      <div class="flex-1">
+                          <h3 class="text-xl font-semibold text-violet">Data Annotation for Autonomous Vehicles</h3>
+                          <p class="text-gray-400 mt-2">A deep dive into how annotation enhances the perception systems of self-driving cars and what types of annotations are critical for success.</p>
+                      </div>
+                  </a>
+              </div>
+          </div>
+      </section>
+
+    <section class="py-10 px-6 md:px-12">
+      <div class="max-w-4xl mx-auto">
+          <h2 class="text-4xl font-semibold text-white text-center">Blog</h2>
+          <div class="grid md:grid-cols-3 gap-6 mt-8">
+              <a href="/PrithviTechnologies-Website/accurateAnnotation" class="bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition block">
+                  <h3 class="text-xl font-semibold text-violet">5 Ways to Ensure Accurate Annotations for Your AI Projects</h3>
+                  <p class="text-gray-400 mt-2">Learn the best approaches to achieving high-quality data labeling that ensures your AI models perform optimally.</p>
+              </a>
+              <a href="/PrithviTechnologies-Website/impactDataLabelling" class="bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition block">
+                  <h3 class="text-xl font-semibold text-violet">The Impact of AI on Data Labeling Automation</h3>
+                  <p class="text-gray-400 mt-2">A look into how AI is transforming the annotation industry and what it means for future AI development.</p>
+              </a>
+              <a href="#" class="bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition block">
+                  <h3 class="text-xl font-semibold text-violet">Key Challenges in Annotating Medical Images and How to Overcome Them</h3>
+                  <p class="text-gray-400 mt-2">Understand the complexities of annotating medical images and how our expert team delivers accurate solutions for AI-driven healthcare models.</p>
+              </a>
+          </div>
+      </div>
+  </section>
+
+
+        <section class="py-10 px-6 md:px-12">
+          <div class="max-w-4xl mx-auto">
+              <h2 class="text-3xl font-semibold text-white text-center">Industry Reports</h2>
+              <div class="flex flex-col gap-6 mt-8">
+                  <a href="/PrithviTechnologies-Website/autonomousDriving" target="_self" class="flex bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition items-center">
+                      <div class="flex-1">
+                          <h3 class="text-xl font-semibold text-violet">The Rise of Data Annotation in Autonomous Driving</h3>
+                          <p class="text-gray-400 mt-2">Explore how data labeling is revolutionizing the autonomous driving industry and the future trends we can expect to see.</p>
+                      </div>
+                  </a>
+                  <a href="/PrithviTechnologies-Website/industryReport1" class="flex bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition items-center">
+                      <div class="flex-1">
+                          <h3 class="text-xl font-semibold text-violet">AI in Healthcare – The Power of Annotated Medical Data</h3>
+                          <p class="text-gray-400 mt-2">A report on the growing importance of annotated medical images in improving diagnostic accuracy and patient outcomes.</p>
+                      </div>
+                  </a>
+                 
+              </div>
+          </div>
+      </section>
+
+        <div></div>
+       
 </MainLayout>
 <style>
      @keyframes moveGradient {

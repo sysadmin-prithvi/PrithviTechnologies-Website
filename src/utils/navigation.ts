@@ -8,6 +8,8 @@ const navBarLinks = [
   { name: "Contact", url: "/PrithviTechnologies-Website/contact" },
   
 ];
+
+
 // An array of links for footer
 const footerLinks = [
   {

@@ -91,17 +91,19 @@ const services = [
         <div class="w-full md:w-1/2 flex flex-col items-center  rounded ">
           <img class="rounded-3xl" src="/PrithviTechnologies-Website/whyChoose.png" alt="">
         </div>
-          <div class="w-full md:w-1/2 flex flex-col justify-center  text-center md:text-left">
+            
+        
+         <div class="text-gray-300 text-lg">
           <h2 class="text-3xl md:text-4xl py-2 font-bold font-sans bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
-          Why Choose Prithvi Technologies?</h2>
-        <p class="text-gray-300 text-lg">
-          We provide top-notch services with a focus on quality, reliability, and customer satisfaction. Our team of experts ensures that you get the best value for your investment.
-          <ul class="text-gray-300 text-lg list-disc ml-10">
+            Why Choose Prithvi Technologies?</h2>
+          <p>
+            We provide top-notch services with a focus on quality, reliability, and customer satisfaction. Our team of experts ensures that you get the best value for your investment.
+          </p>
+          <ul class="text-gray-300 text-lg list-disc ml-4 sm:ml-6 lg:ml-10 mt-2">
             {services.map(service => <li>{service}</li>)}
           </ul>
-        </p>
-      </div>
-
+        </div>
+        
 
     </div>
     <!-- testimonials -->
@@ -109,8 +111,8 @@ const services = [
 
        <h1 class="mt-32  text-white text-center text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 mb-8">Testimonials</h1>
      </div>
-    <div class=" mb-4 w-screen inline-flex flex-nowrap overflow-hidden bg-black [mask-image:_linear-gradient(to_left,transparent_0,_black_1000px,_black_calc(100%-2500px),transparent_90%)]">
-      <ul class=" space-x-4 flex items-center justify-center md:justify-start [&_li]:mx-8  animate-infinite-scroll">
+    <div class=" mb-4 w-screen inline-flex flex-nowrap overflow-hidden bg-black  lg:[mask-image:_linear-gradient(to_left,transparent_0,_black_1000px,_black_calc(100%-2500px),transparent_99%)]">
+      <ul class="  flex items-center justify-center space-x-2 md:justify-start [&_li]:mx-2  animate-infinite-scroll gap-10">
           <!-- ... -->
         <li>
 
@@ -136,7 +138,7 @@ const services = [
         </li>
 
       </ul>
-      <ul class="flex items-center justify-center md:justify-start [&_li]:mx-8  animate-infinite-scroll" aria-hidden="true">
+      <ul class="flex items-center inline-flex justify-center md:justify-start [&_li]:mx-2  animate-infinite-scroll" aria-hidden="true">
           <!-- ... -->
            <li>
 
@@ -164,11 +166,11 @@ const services = [
   </div>
   
   
- <div class="h-[30rem] w-full  bg-indigoBlue flex  justify-center items-center  relative space-x-10 rounded-md p-10" style="background-color:#0f172a;">
+ <!-- <div class="h-[30rem] w-full  bg-indigoBlue flex  justify-center items-center  relative space-x-10 rounded-md p-10" style="background-color:#0f172a;"> -->
   <!-- <div> -->
-   <div class="flex flex-row justify-center  h-[25rem] w-[80rem] border  overflow-hidden ">
+   <!-- <div class="flex flex-row justify-center  h-[25rem] w-[80rem]   overflow-hidden "> -->
         <!-- <div class="overflow-auto border "> -->
-          <div id="scrollableDiv" class="overflow-y-auto space-y-5 ">
+          <!-- <div id="scrollableDiv" class="overflow-y-auto space-y-5 ">
             <div>
               <h2 class="text-2xl font-bold text-gray-100  ">Collaborative Editing</h2>
               <p class="text-kg text-gray-300 max-w-sm mt-10" style="opacity: 1;">
@@ -185,9 +187,9 @@ const services = [
                   <p class="text-kg text-gray-300 max-w-sm mt-10" >
                     Experience real-time updates and never stress about version control again. Our platform ensures that you're always working on the most recent version of your project, eliminating the need for constant manual updates. Stay in the loop, keep your team aligned, and maintain the flow of your work without any interruptions.</p>
             </div>
-            </div>
-     </div>
-   </div>
+            </div> -->
+     <!-- </div> -->
+   <!-- </div> -->
      
  </div>
        
@@ -204,7 +206,7 @@ const services = [
 <script is:inline>
     const scrollableDiv = document.getElementById("scrollableDiv");
 
-        scrollableDiv.addEventListener("mouseenter", () => {
+        scrollableDiv.addEventListener("mouseEnter", () => {
             document.body.style.overflow = "hidden"; // Disable page scroll
         });
 
