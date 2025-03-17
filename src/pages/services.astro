@@ -52,107 +52,97 @@ const pageTitle: string = `Services | ${SITE.title}`;
         Empowering Your Buisness with comprehensive Data Annotation Services
       </h1>
     </div>
-    <div class="bg-indigoBlue lg:h-[30rem] sm:h-[25rem] lg:flex-row sm:flex-col mt-[5rem]">
-    <div class="flex sm:flex-col justify-center items-center bg-indigoBlue ">
-      <div class="flex lg:flex-row flex-col lg:gap-10 lg:text-2xl tabs justify-center items-center  lg:border-b-2 lg:border-white  ">
-        <div>
-          <button id='image-button' class="text-gray-300 p-6 tab-links tab-button" onclick="getAnnotation(Event,'image',id)">Image Annotation</button> 
-          </div>
-        <div>
-          <button id='text-button' class="text-gray-300 p-6 tab-links tab-button" onclick="getAnnotation(Event,'text',id)">Text Annotation</button>
-          </div>
-        <div>
-          <button id='video-button' class="text-gray-300 p-6 tab-links tab-button" onclick="getAnnotation(Event,'video',id)">Video Annotation</button>
-          </div>
-        <div>
-          <button id='audio-button' class="text-gray-300 p-6 tab-links tab-button" onclick="getAnnotation(Event,'audio',id)">Audio Annotation</button>
-          </div>
-      </div> 
-    </div> 
-
-    <div class="flex flex-row lg:mx-[25rem] sm:mt-[2rem]">
-
-      <div class="h-[22rem] w-1/2 py-2 w-fit ">
-        <div class="tab-content  space-y-6" id="image">
-          <div>
-            <h1 class="lg:text-2xl text-white">Bounding Box Annotation</h1>
-            <p class="lg:text-1xl text-white">Detect and classify objects in images</p>
-          </div>
-          <div>
-            <h1 class="lg:text-2xl text-white">Semantic segmentation</h1>
-            <p class="lg:text-1xl text-white">Classify each pixel  of an image  into predefined categories</p>
-          </div>
-          <div>
-            <h1 class="lg:text-2xl text-white">Key Point Annotation</h1>
-            <p class="lg:text-1xl text-white">Mark Specific points of interest in am image</p>
-          </div>
-          <div>
-            <h1 class="lg:text-2xl text-white">Image Tagging</h1>
-            <p class="lg:text-1xl text-white">Adds descriptive tags to an image</p>
-          </div>
-          </div>
-          <div class="tab-content space-y-6" id="text" style="display:none">
-            <div>
-              <h1 class="text-2xl text-white">Entity Annotation</h1>
-              <p class="text-1xl text-white">Detect and classify objects in images</p>
-            </div>
-            <div>
-              <h1 class="text-2xl text-white">Semantic Annotation</h1>
-              <p class="text-1xl text-white">Classify each pixel  of an image  into predefined categories</p>
-            </div>
-            <div>
-              <h1 class="text-2xl text-white">Text Classification</h1>
-              <p class="text-1xl text-white">Mark Specific points of interest in am image</p>
-            </div>
-            </div> 
-            <div class="tab-content flex space-y-6" id="audio" style="display:none">
-              <div>
-                <h1 class="text-2xl text-white">Speech-To-Text Transition  </h1>
-                <p class="text-1xl text-white">Convert spoken words into text </p>
-              </div>
-              <div>
-                <h1 class="text-2xl text-white ">Audio Classification</h1>
-                <p class="text-1xl text-white">Categorize audio into predefined classes</p>
-              </div>
-              <div>
-                <h1 class="text-2xl text-white">Acoustic Event Detection</h1>
-                <p class="text-1xl text-white">Detect and classify specific sounds</p>
-              </div>
-            
-              <div>
-                <h1 class="text-2xl text-white">Text-Stamped Annotation</h1>
-                <p class="text-1xl text-white">Tag specific segments of audio data</p>
-              </div>
-              </div>
-              
-              <div class="tab-content flex  space-y-6" id="video" style="display:none">
-                <div>
-                  <h1 class="text-2xl text-white">Frame-by-Frame Annotation</h1>
-                  <p class="text-1xl text-white">Annotate each frame as a standalone image</p>
-                </div>
-                <div>
-                  <h1 class="text-2xl text-white">Object Tracking</h1>
-                  <p class="text-1xl text-white">Track objects across video frames</p>
-                </div>
-                <div>
-                  <h1 class="text-2xl text-white">Scene Annotation</h1>
-                  <p class="text-1xl text-white">Label entire screens with descriptive tags</p>
-                </div>
-              
-                <div>
-                  <h1 class="text-2xl text-white">Pose Estimation</h1>
-                  <p class="text-1xl text-white">Mark body joint movements over time.</p>
-                </div>
-                </div>
-
-      </div>  
-      <div>
-        <img src="" alt="">
-      </div>
-    </div>
     
-
+html
+Copy
+Edit
+<div class="bg-indigoBlue mt-[5rem] px-4 py-6 lg:py-12 transition-colors duration-300" id="tab-container">
+  <div class="flex flex-col items-center">
+    <div class="flex flex-wrap justify-center items-center gap-4 lg:gap-10 border-b-2 border-white w-full max-w-4xl">
+      <button id="image-button" class="text-gray-300 font-bold p-4 md:p-6 tab-links tab-button" onclick="getAnnotation(event, 'image')">Image Annotation</button>
+      <button id="text-button" class="text-gray-300 font-bold p-4 md:p-6 tab-links tab-button" onclick="getAnnotation(event, 'text')">Text Annotation</button>
+      <button id="video-button" class="text-gray-300 font-bold p-4 md:p-6 tab-links tab-button" onclick="getAnnotation(event, 'video')">Video Annotation</button>
+      <button id="audio-button" class="text-gray-300 font-bold p-4 md:p-6 tab-links tab-button" onclick="getAnnotation(event, 'audio')">Audio Annotation</button>
     </div>
+  </div>
+
+  <div class="flex flex-col lg:flex-row justify-center items-center mt-6 lg:mt-10">
+    <div class="w-full max-w-3xl">
+      <div class="tab-content space-y-6" id="image">
+        <div>
+          <h1 class="lg:text-2xl sm:text-xl text-white font-bold">Bounding Box Annotation</h1>
+          <p class="text-lg text-white font-bold">Detect and classify objects in images</p>
+        </div>
+        <div>
+          <h1 class="lg:text-2xl sm:text-xl  text-white font-bold">Semantic Segmentation</h1>
+          <p class="text-lg text-white font-bold">Classify each pixel of an image into predefined categories</p>
+        </div>
+        <div>
+          <h1 class="lg:text-2xl sm:text-xl  text-white font-bold">Key Point Annotation</h1>
+          <p class="text-lg text-white font-bold">Mark specific points of interest in an image</p>
+        </div>
+        <div>
+          <h1 class="lg:text-2xl sm:text-xl  text-white font-bold">Image Tagging</h1>
+          <p class="text-lg text-white font-bold">Adds descriptive tags to an image</p>
+        </div>
+      </div>
+
+      <div class="tab-content space-y-6 hidden" id="text">
+        <div>
+          <h1 class="lg:text-2xl sm:text-xl  text-white font-bold">Entity Annotation</h1>
+          <p class="text-lg text-white font-bold">Identify and classify named entities in text</p>
+        </div>
+        <div>
+          <h1 class="lg:text-2xl sm:text-xl  text-white font-bold">Semantic Annotation</h1>
+          <p class="text-lg text-white font-bold">Provide contextual meanings for text content</p>
+        </div>
+        <div>
+          <h1 class="lg:text-2xl sm:text-xl  text-white font-bold">Text Classification</h1>
+          <p class="text-lg text-white font-bold">Categorize text into predefined groups</p>
+        </div>
+      </div>
+
+      <div class="tab-content space-y-6 hidden" id="audio">
+        <div>
+          <h1 class="lg:text-2xl sm:text-xl  text-white font-bold">Speech-to-Text Transcription</h1>
+          <p class="text-lg text-white font-bold">Convert spoken words into text</p>
+        </div>
+        <div>
+          <h1 class="lg:text-2xl sm:text-xl  text-white font-bold">Audio Classification</h1>
+          <p class="text-lg text-white font-bold">Categorize audio into predefined classes</p>
+        </div>
+        <div>
+          <h1 class="lg:text-2xl sm:text-xl  text-white font-bold">Acoustic Event Detection</h1>
+          <p class="text-lg text-white font-bold">Detect and classify specific sounds</p>
+        </div>
+        <div>
+          <h1 class="lg:text-2xl sm:text-xl  text-white font-bold">Time-Stamped Annotation</h1>
+          <p class="text-lg text-white font-bold">Tag specific segments of audio data</p>
+        </div>
+      </div>
+
+      <div class="tab-content space-y-6 hidden" id="video">
+        <div>
+          <h1 class="lg:text-2xl sm:text-xl  text-white font-bold">Frame-by-Frame Annotation</h1>
+          <p class="text-lg text-white font-bold">Annotate each frame as a standalone image</p>
+        </div>
+        <div>
+          <h1 class="lg:text-2xl sm:text-xl  text-white font-bold">Object Tracking</h1>
+          <p class="text-lg text-white font-bold">Track objects across video frames</p>
+        </div>
+        <div>
+          <h1 class="lg:text-2xl sm:text-xl  text-white font-bold">Scene Annotation</h1>
+          <p class="text-lg text-white font-bold">Label entire scenes with descriptive tags</p>
+        </div>
+        <div>
+          <h1 class="lg:text-2xl sm:text-xl  text-white font-bold">Pose Estimation</h1>
+          <p class="text-lg text-white font-bold">Mark body joint movements over time</p>
+        </div>
+      </div>
+    </div>  
+
+  </div>
+</div>
   </div>
 
   <div class="annotation-tab">
@@ -160,14 +150,13 @@ const pageTitle: string = `Services | ${SITE.title}`;
 
   </div>
 
-  <div class="mt-[10rem]">
+  <div class="lg:mt-[10rem] mt-[5rem]">
 
     <div class="flex  flex-col lg:gap-[2.5rem]">
     <div class="flex flex-col justify-center items-center  font-bold">
-      <h1 class="text-violet text-4xl ml-10  pb-[2rem]">How Does it Work?</h1>
-      <p class="text-gray-400 sm:text-3xl text lg:text-2xl lg:p-10 text-center pb-[2rem]">At Prithvi Technologies,we streamline your data annotation projects through a structured approach </p>
+      <h1 class="text-violet lg:text-4xl text-2xl   pb-[2rem]">How Does it Work?</h1>
+      <p class="text-gray-400 sm:text-3xl text lg:text-xl  lg:p-10 text-center pb-[2rem]">At Prithvi Technologies,we streamline your data annotation projects through a structured approach </p>
     </div>
-<!-- how does it Work? -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 p-2">
 
       <!-- 1. -->   
@@ -260,7 +249,11 @@ const pageTitle: string = `Services | ${SITE.title}`;
     
         
   </div>
+  <footer class=" text-white py-8 px-6 md:px-12 mt-10 text-center">
+    <p class="text-sm">© 2024 Prithvi Technologies. All rights reserved.</p>
+  </footer>
   </div>
+
 
 
   
