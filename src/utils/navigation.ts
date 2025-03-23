@@ -4,7 +4,7 @@ const navBarLinks = [
   // { name: "Products", url: "/PrithviTechnologies-Website/" },
   { name: "Services", url: "/PrithviTechnologies-Website/services" },
   // { name: "Blog", url: "/PrithviTechnologies-Website/" },
-  { name: "ResourceHub", url: "/PrithviTechnologies-Website/resourceHub" },
+  { name: "ResourceHub", url: "/resourceHub" },
   { name: "Contact", url: "/PrithviTechnologies-Website/contact" },
   
 ];
