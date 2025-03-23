@@ -1,9 +1,9 @@
 // An array of links for navigation bar
 const navBarLinks = [
-  { name: "Home", url: "/PrithviTechnologies-Website" },
-  // { name: "Products", url: "/PrithviTechnologies-Website/" },
+  { name: "Home", url: "/" },
+  // { name: "Products", url: "/" },
   { name: "Services", url: "/services" },
-  // { name: "Blog", url: "/PrithviTechnologies-Website/" },
+  // { name: "Blog", url: "/" },
   { name: "ResourceHub", url: "/resourceHub" },
   { name: "Contact", url: "/contact" },
   

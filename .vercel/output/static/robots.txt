@@ -16,4 +16,4 @@ Crawl-delay: 2
 User-agent: *
 Disallow: /
 
-Sitemap: https://sysadmin-prithvi.github.io/PrithviTechnologies-Website/sitemap-index.xml
+Sitemap: https://sysadmin-prithvi.github.io/sitemap-index.xml

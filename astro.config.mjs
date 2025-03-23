@@ -10,7 +10,7 @@ import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
 export default defineConfig({
-  // base:"https://sysadmin-prithvi.github.io/PrithviTechnologies-Website/",
+  // base:"https://sysadmin-prithvi.github.io/",
 
   // https://docs.astro.build/en/guides/images/#authorizing-remote-images
   site: "https://xequals-ai.com/",
