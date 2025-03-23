@@ -2,10 +2,10 @@
 const navBarLinks = [
   { name: "Home", url: "/PrithviTechnologies-Website" },
   // { name: "Products", url: "/PrithviTechnologies-Website/" },
-  { name: "Services", url: "/PrithviTechnologies-Website/services" },
+  { name: "Services", url: "/services" },
   // { name: "Blog", url: "/PrithviTechnologies-Website/" },
   { name: "ResourceHub", url: "/resourceHub" },
-  { name: "Contact", url: "/PrithviTechnologies-Website/contact" },
+  { name: "Contact", url: "/contact" },
   
 ];
 
