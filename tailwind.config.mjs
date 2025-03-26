@@ -19,9 +19,9 @@ export default {
       yellow: colors.yellow,
       orange: {
         ...colors.orange,
-        300: "#fb713b",
-        400: "#fa5a15",
-        500: "#e14d0b",
+        300: "#7d6eeb",
+        400: "#7d6eeb",
+        500: "#7d6eeb",
       }, // Primary colors, used mainly for links, buttons and svg icons
       red: colors.red, // Used for bookmark icon
       zinc: colors.zinc,
