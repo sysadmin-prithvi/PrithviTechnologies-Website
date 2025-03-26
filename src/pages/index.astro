@@ -62,14 +62,16 @@ const services = [
 
   
       <div class="flex items-center inset-0 justify-center  bg-black">
-        <video class="w-full h-full !object-cover "
-        autoplay 
-          loop 
-          playsinline 
-          onloadedmetadata="this.play();">
-          <source src="/videos/datavideo.mp4" type="video/mp4">
-          Your browser does not support the video tag.</video>
-        </div>
+          <video 
+            class="w-full h-full !object-cover"
+            autoplay 
+            loop 
+            playsinline 
+            preload="auto"
+            onloadedmetadata="this.play();">
+            <source src="/videos/datavideo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
       </div>
 
 
@@ -209,19 +211,25 @@ const services = [
         }
 </style>
 <script is:inline>
-    const scrollableDiv = document.getElementById("scrollableDiv");
+    
 
-        scrollableDiv.addEventListener("mouseEnter", () => {
-            document.body.style.overflow = "hidden"; // Disable page scroll
-        });
 
-        scrollableDiv.addEventListener("mouseleave", () => {
-            document.body.style.overflow = "auto"; // Enable page scroll when mouse leaves
-        });
+    const video = document.querySelector("video");
 
-        scrollableDiv.addEventListener("wheel", (e) => {
-            // Scroll the div manually
-            scrollableDiv.scrollTop += e.deltaY;
-            e.preventDefault(); // Prevent page scrolling
-        });
+// Attempt to play the video
+if (video) {
+    video.play().catch(error => {
+        console.log("Autoplay failed:", error);
+        // Optionally provide user feedback or fallback behavior here
+    });
+
+    // Add click event listener for play/pause toggle
+    video.addEventListener("click", () => {
+        if (video.paused) {
+            video.play().catch(error => console.log("Error playing video:", error));
+        } else {
+            video.pause();
+        }
+    });
+}
     </script>
