@@ -149,7 +149,40 @@ const pageTitle: string = `Services | ${SITE.title}`;
 
 
   </div>
-
+  <section class="py-20 bg-[#7d6eeb]">
+    <div class="container mx-auto px-4 mb-12">
+      <!-- <h2 class="text-4xl md:text-5xl font-bold text-center text-gray-300 mb-4">Accomplishments</h2> -->
+      <h2 class="text-3xl text-center text-gray-300">Empowering AI innovators with exceptional data annotation services,</h2>
+      <h2 class="text-3xl text-center text-gray-300"> a steadfast commitment to quality assurance, and rapid delivery</h2>
+    </div>
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16">
+        <!-- Stat Circle 1 -->
+        <div class="bg-[#f9f9f1] rounded-full w-64 h-64 flex flex-col justify-center items-center text-center p-6">
+          <h3 class="text-4xl font-bold mb-2">
+            <span id="count1" data-target="4000">0</span>+
+          </h3>
+          <p class="text-xl">hours of annotation experience</p>
+        </div>
+        
+        <!-- Stat Circle 2 -->
+        <div class="bg-[#f9f9f1] rounded-full w-64 h-64 flex flex-col justify-center items-center text-center p-6">
+          <h3 class="text-4xl font-bold mb-2">
+            <span id="count2" data-target="500">0</span>K+
+          </h3>
+          <p class="text-xl">video frames and images annotated</p>
+        </div>
+        
+        <!-- Stat Circle 3 -->
+        <div class="bg-[#f9f9f1] rounded-full w-64 h-64 flex flex-col justify-center items-center text-center p-6">
+          <h3 class="text-4xl font-bold mb-2">
+            <span id="count3" data-target="1.1">0</span> M+
+          </h3>
+          <p class="text-xl">objects annotated</p>
+        </div>
+      </div>
+    </div>
+  </section>
   <div class="lg:mt-[10rem] mt-[5rem]">
 
     <div class="flex  flex-col lg:gap-[2.5rem]">
@@ -254,7 +287,49 @@ const pageTitle: string = `Services | ${SITE.title}`;
   </footer>
   </div>
 
-
+  <script>
+    function animateCounters() {
+      const counters = document.querySelectorAll('[id^="count"]');
+      const speed = 100; // Lower is faster
+  
+      counters.forEach(counter => {
+        const target = parseFloat(counter.getAttribute('data-target'));
+        const isDecimal = target % 1 !== 0;
+        const increment = target / speed;
+        let count = 0;
+  
+        const updateCount = () => {
+          if (count < target) {
+            count += increment;
+            // For decimal numbers (like 1.1) we need special formatting
+            counter.innerText = isDecimal ? 
+              (count > target ? target : count.toFixed(1)) : 
+              Math.floor(count);
+            setTimeout(updateCount, 30);
+          } else {
+            counter.innerText = isDecimal ? target.toFixed(1) : target;
+          }
+        };
+  
+        updateCount();
+      });
+    }
+  
+    // Trigger the animation when the section is visible
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCounters();
+            observer.disconnect();
+          }
+        });
+      }, { threshold: 0.1 });
+  
+      const section = document.querySelector('.py-20.bg-\\[\\#7d6eeb\\]');
+      if (section) observer.observe(section);
+    });
+  </script>
 
   
   </MainLayout>
