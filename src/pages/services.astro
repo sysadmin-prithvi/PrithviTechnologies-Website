@@ -289,46 +289,56 @@ const pageTitle: string = `Services | ${SITE.title}`;
 
   <script>
     function animateCounters() {
-      const counters = document.querySelectorAll('[id^="count"]');
-      const speed = 100; // Lower is faster
-  
-      counters.forEach(counter => {
-        const target = parseFloat(counter.getAttribute('data-target'));
-        const isDecimal = target % 1 !== 0;
-        const increment = target / speed;
-        let count = 0;
-  
-        const updateCount = () => {
-          if (count < target) {
-            count += increment;
-            // For decimal numbers (like 1.1) we need special formatting
-            counter.innerText = isDecimal ? 
-              (count > target ? target : count.toFixed(1)) : 
-              Math.floor(count);
-            setTimeout(updateCount, 30);
-          } else {
-            counter.innerText = isDecimal ? target.toFixed(1) : target;
-          }
-        };
-  
-        updateCount();
-      });
-    }
-  
-    // Trigger the animation when the section is visible
-    document.addEventListener('DOMContentLoaded', () => {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            animateCounters();
-            observer.disconnect();
-          }
-        });
-      }, { threshold: 0.1 });
-  
-      const section = document.querySelector('.py-20.bg-\\[\\#7d6eeb\\]');
-      if (section) observer.observe(section);
+    const counters = document.querySelectorAll('[id^="count"]');
+    
+    counters.forEach(counter => {
+      const target = parseFloat(counter.getAttribute('data-target') || '0');
+      const duration = 2000; // animation duration in milliseconds
+      const startTime = performance.now();
+      
+      // Handle decimal values differently
+      const isDecimal = target % 1 !== 0;
+      
+      function updateCounter(currentTime: number) {
+        const elapsedTime = currentTime - startTime;
+        const progress = Math.min(elapsedTime / duration, 1);
+        
+        // Calculate current count value
+        let currentValue = progress * target;
+        
+        // Format the display differently based on if it's a decimal
+        if (isDecimal) {
+          counter.textContent = currentValue.toFixed(1);
+        } else {
+          counter.textContent = Math.floor(currentValue).toString();
+        }
+        
+        if (progress < 1) {
+          requestAnimationFrame(updateCounter);
+        }
+      }
+      
+      requestAnimationFrame(updateCounter);
     });
+  }
+
+  // Use Intersection Observer to trigger animation when section is visible
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounters();
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    const firstCounter = document.querySelector('#count1');
+    if (firstCounter) {
+      const statsSection = firstCounter.closest('section');
+      if (statsSection) observer.observe(statsSection);
+    }
+  });
   </script>
 
   
