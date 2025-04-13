@@ -288,7 +288,7 @@ const pageTitle: string = `Services | ${SITE.title}`;
         const startTime = performance.now();
         const isDecimal = target % 1 !== 0;
   
-        function updateCounter(currentTime) {
+        function updateCounter(currentTime: number) {
           const elapsedTime = currentTime - startTime;
           const progress = Math.min(elapsedTime / duration, 1);
           let currentValue = progress * target;
