@@ -143,46 +143,37 @@ const pageTitle: string = `Services | ${SITE.title}`;
 
   </div>
 </div>
-  </div>
 
+  </div>
   <div class="annotation-tab">
-
-
   </div>
-  <section class="py-20 bg-[#7d6eeb]">
-    <div class="container mx-auto px-4 mb-12">
-      <!-- <h2 class="text-4xl md:text-5xl font-bold text-center text-gray-300 mb-4">Accomplishments</h2> -->
-      <h2 class="text-3xl text-center text-gray-300">Empowering AI innovators with exceptional data annotation services,</h2>
-      <h2 class="text-3xl text-center text-gray-300"> a steadfast commitment to quality assurance, and rapid delivery</h2>
-    </div>
-    <div class="container mx-auto px-4">
-      <div class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16">
-        <!-- Stat Circle 1 -->
-        <div class="bg-[#f9f9f1] rounded-full w-64 h-64 flex flex-col justify-center items-center text-center p-6">
-          <h3 class="text-4xl font-bold mb-2">
-            <span id="count1" data-target="4000">0</span>+
-          </h3>
-          <p class="text-xl">hours of annotation experience</p>
+
+  <section id="statsSection" class="py-12 bg-[#7d6eeb]">
+    <div class="max-w-7xl mx-auto px-4 space-y-4 text-center">
+      <h2 class="text-lg sm:text-xl md:text-2xl text-gray-300 font-medium">
+        Empowering AI innovators with exceptional data annotation services,
+      </h2>
+      <h2 class="text-lg sm:text-xl md:text-2xl text-gray-300 font-medium">
+        a steadfast commitment to quality assurance, and rapid delivery
+      </h2>
+  
+      <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+        <div class="w-40 h-40 sm:w-48 sm:h-48 bg-[#f9f9f1] rounded-full flex flex-col items-center justify-center p-4">
+          <h3 class="text-2xl font-bold"><span id="count1" data-target="4000">0</span>+</h3>
+          <p class="text-sm">hours of annotation experience</p>
         </div>
-        
-        <!-- Stat Circle 2 -->
-        <div class="bg-[#f9f9f1] rounded-full w-64 h-64 flex flex-col justify-center items-center text-center p-6">
-          <h3 class="text-4xl font-bold mb-2">
-            <span id="count2" data-target="500">0</span>K+
-          </h3>
-          <p class="text-xl">video frames and images annotated</p>
+        <div class="w-40 h-40 sm:w-48 sm:h-48 bg-[#f9f9f1] rounded-full flex flex-col items-center justify-center p-4">
+          <h3 class="text-2xl font-bold"><span id="count2" data-target="500">0</span>K+</h3>
+          <p class="text-sm">video frames and images annotated</p>
         </div>
-        
-        <!-- Stat Circle 3 -->
-        <div class="bg-[#f9f9f1] rounded-full w-64 h-64 flex flex-col justify-center items-center text-center p-6">
-          <h3 class="text-4xl font-bold mb-2">
-            <span id="count3" data-target="1.1">0</span> M+
-          </h3>
-          <p class="text-xl">objects annotated</p>
+        <div class="w-40 h-40 sm:w-48 sm:h-48 bg-[#f9f9f1] rounded-full flex flex-col items-center justify-center p-4">
+          <h3 class="text-2xl font-bold"><span id="count3" data-target="1.1">0</span>M+</h3>
+          <p class="text-sm">objects annotated</p>
         </div>
       </div>
     </div>
   </section>
+
   <div class="lg:mt-[10rem] mt-[5rem]">
 
     <div class="flex  flex-col lg:gap-[2.5rem]">
@@ -289,57 +280,45 @@ const pageTitle: string = `Services | ${SITE.title}`;
 
   <script>
     function animateCounters() {
-    const counters = document.querySelectorAll('[id^="count"]');
-    
-    counters.forEach(counter => {
-      const target = parseFloat(counter.getAttribute('data-target') || '0');
-      const duration = 2000; // animation duration in milliseconds
-      const startTime = performance.now();
-      
-      // Handle decimal values differently
-      const isDecimal = target % 1 !== 0;
-      
-      function updateCounter(currentTime: number) {
-        const elapsedTime = currentTime - startTime;
-        const progress = Math.min(elapsedTime / duration, 1);
-        
-        // Calculate current count value
-        let currentValue = progress * target;
-        
-        // Format the display differently based on if it's a decimal
-        if (isDecimal) {
-          counter.textContent = currentValue.toFixed(1);
-        } else {
-          counter.textContent = Math.floor(currentValue).toString();
+      const counters = document.querySelectorAll('[id^="count"]');
+  
+      counters.forEach(counter => {
+        const target = parseFloat(counter.getAttribute('data-target') || '0');
+        const duration = 2000;
+        const startTime = performance.now();
+        const isDecimal = target % 1 !== 0;
+  
+        function updateCounter(currentTime) {
+          const elapsedTime = currentTime - startTime;
+          const progress = Math.min(elapsedTime / duration, 1);
+          let currentValue = progress * target;
+  
+          counter.textContent = isDecimal ? currentValue.toFixed(1) : Math.floor(currentValue).toString();
+  
+          if (progress < 1) {
+            requestAnimationFrame(updateCounter);
+          }
         }
-        
-        if (progress < 1) {
-          requestAnimationFrame(updateCounter);
-        }
-      }
-      
-      requestAnimationFrame(updateCounter);
-    });
-  }
-
-  // Use Intersection Observer to trigger animation when section is visible
-  document.addEventListener('DOMContentLoaded', () => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          animateCounters();
-          observer.unobserve(entry.target);
-        }
+  
+        requestAnimationFrame(updateCounter);
       });
-    }, { threshold: 0.1 });
-    
-    const firstCounter = document.querySelector('#count1');
-    if (firstCounter) {
-      const statsSection = firstCounter.closest('section');
-      if (statsSection) observer.observe(statsSection);
     }
-  });
+  
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCounters();
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+  
+      const statsSection = document.querySelector('#statsSection');
+      if (statsSection) observer.observe(statsSection);
+    });
   </script>
+  
 
   
   </MainLayout>
