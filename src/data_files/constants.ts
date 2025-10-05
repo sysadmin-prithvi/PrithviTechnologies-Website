@@ -4,11 +4,11 @@ import ogImageSrc from "@images/social.png";
 
 export const SITE = {
   title: "XEqualsAI",
-  tagline: "Top-quality Hardware Tools",
-  description: "ScrewFast offers top-tier hardware tools and expert construction services to meet all your project needs. Start exploring and contact our sales team for superior quality and reliability.",
-  description_short: "ScrewFast offers top-tier hardware tools and expert construction services to meet all your project needs.",
-  url: "https://screwfast.uk",
-  author: "Emil Gulamov",
+  tagline: "Enterprise-scale AI data annotation—proven at volume, built for precision.",
+  description: "XEqualsAI transforms raw data into high-impact labeled assets with robust infrastructure, advanced automation, and expert annotators—supporting enterprise AI at scale.",
+  description_short: "Enterprise-scale AI data annotation with automation, QC, and secure delivery.",
+  url: "https://xequals.ai",
+  author: "XEqualsAI",
 };
 
 export const SEO = {
@@ -35,8 +35,8 @@ export const OG = {
   locale: "en_US",
   type: "website",
   url: SITE.url,
-  title: `${SITE.title}: : Hardware Tools & Construction Services`,
-  description: "Equip your projects with ScrewFast's top-quality hardware tools and expert construction services. Trusted by industry leaders, ScrewFast offers simplicity, affordability, and reliability. Experience the difference with user-centric design and cutting-edge tools. Start exploring now!",
+  title: `${SITE.title}: Enterprise-Scale AI Data Annotation`,
+  description: "Enterprise-scale AI data annotation—proven at volume, built for precision. Advanced automation, multi-stage QC, secure, end-to-end delivery.",
   image: ogImageSrc,
 };
 

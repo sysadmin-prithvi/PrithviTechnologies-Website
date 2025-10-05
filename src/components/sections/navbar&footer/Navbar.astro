@@ -24,11 +24,11 @@ const homeUrl = Astro.currentLocale === "fr" ? "/fr" : "/";
     <div class="flex justify-center items-center">
       <!-- Brand logo -->
       <a
-        class="flex-none rounded-lg text-xl font-bold outline-none ring-zinc-500 focus-visible:ring dark:ring-zinc-200 dark:focus:outline-none"
+        class="flex flex-none items-center gap-2 rounded-lg text-xl font-bold outline-none ring-zinc-500 focus-visible:ring dark:ring-zinc-200 dark:focus:outline-none"
         href={homeUrl}
         aria-label="Brand"
       >
-        <BrandLogo class="h-auto w-24" />
+        <BrandLogo class="h-auto" />
       </a>
       <!-- Collapse toggle for smaller screens -->
       <div class="ml-auto mr-5 md:hidden">

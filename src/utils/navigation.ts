@@ -34,7 +34,7 @@ const footerLinks = [
 const socialLinks = {
   facebook: "https://www.facebook.com/",
   x: "https://twitter.com/",
-  github: "https://github.com/mearashadowfax/ScrewFast",
+  github: "https://github.com/xequalsai",
   google: "https://www.google.com/",
   slack: "https://slack.com/",
 };
