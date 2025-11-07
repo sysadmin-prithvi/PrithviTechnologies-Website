@@ -3,14 +3,9 @@ import path from "node:path";
 
 const LOADER = path.resolve(__dirname, 'src/visual-edits/component-tagger-loader.js');
 
-// Read base path from env for GitHub Pages project sites (e.g., /repo-name)
-const basePathEnv = process.env.NEXT_PUBLIC_BASE_PATH;
-
 const nextConfig: NextConfig = {
   output: "export",
   trailingSlash: true,
-  basePath: basePathEnv && basePathEnv.startsWith("/") ? basePathEnv : undefined,
-  assetPrefix: basePathEnv && basePathEnv.startsWith("/") ? basePathEnv : undefined,
   images: {
     unoptimized: true,
     remotePatterns: [
