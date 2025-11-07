@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Redirecting…</title>
+    <meta name="robots" content="noindex" />
+    <style>
+      html,body{height:100%}body{display:flex;align-items:center;justify-content:center;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;background:#0f0f0f;color:#bcbcbc;margin:0}
+      .card{padding:1.25rem 1.5rem;border:1px solid #292929;border-radius:0.5rem;background:#1a1a1a;max-width:36rem}
+      .muted{color:#4d4d4d;font-size:0.9rem}
+    </style>
+    <script>
+      /* SPA fallback for GitHub Pages with basePath auto-detect
+       * Inspired by https://github.com/rafrex/spa-github-pages
+       * - Encodes the original path into the query string and redirects to site base
+       * - The app (layout.tsx) decodes it back and restores the URL via history.replaceState
+       */
+      (function () {
+        var l = window.location;
+        // Known top-level routes in this app (user-page scenario)
+        var topRoutes = {"":1, "solutions":1, "platform":1, "resources":1, "pricing":1, "contact":1};
+        var segments = l.pathname.split('/').filter(Boolean); // ["repo", "path", ...] or ["contact", ...]
+
+        // Decide how many leading segments belong to the site base (project page keeps 1, user page keeps 0)
+        var keepSegments = 0;
+        if (segments.length && !topRoutes[segments[0]]) {
+          // Likely a project page (first segment is repo name)
+          keepSegments = 1;
+        }
+
+        // Build the site base path we should redirect to
+        var siteBase = '/' + segments.slice(0, keepSegments).join('/');
+        if (siteBase !== '/' && siteBase !== '') siteBase += '/';
+
+        // Remainder becomes the virtual route to restore in the app
+        var remainder = segments.slice(keepSegments).join('/');
+
+        // Preserve existing query string using ~and~ encoding to avoid ambiguity
+        var search = l.search ? ('&' + l.search.slice(1).replace(/&/g, '~and~')) : '';
+
+        // Construct final redirect URL using the "?/" signal
+        var redirectUrl = l.protocol + '//' + l.host + siteBase + '?/' + remainder + search + l.hash;
+
+        // If we're already in a loop (unlikely), bail out
+        if (l.href === redirectUrl) return;
+
+        // Perform redirect (no referrer to avoid analytics noise)
+        l.replace(redirectUrl);
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="card">
+      <div>Redirecting…</div>
+      <div class="muted">If you are not redirected automatically, <a href=".">click here</a>.</div>
+    </div>
+  </body>
+</html>
