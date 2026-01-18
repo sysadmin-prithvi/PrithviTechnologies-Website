@@ -1,11 +1,19 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { signOut } from "firebase/auth";
 import { firebaseAuth } from "@/lib/firebase/client";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import {
   Table,
   TableBody,
@@ -14,8 +22,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Download, ArrowLeft, RefreshCw } from "lucide-react";
-import { Link } from "lucide-react";
+import { Download, ArrowLeft, RefreshCw, X } from "lucide-react";
 
 type DailyStatusRow = {
   id: number;
@@ -37,6 +44,14 @@ type QualityCheckRow = {
   created_at: string;
 };
 
+type Filters = {
+  dateFrom: string;
+  dateTo: string;
+  userEmail: string;
+  projectId: string;
+  task: string;
+};
+
 export default function StatusReport() {
   const router = useRouter();
   const [records, setRecords] = useState<DailyStatusRow[]>([]);
@@ -44,6 +59,13 @@ export default function StatusReport() {
   const [isOrganizer, setIsOrganizer] = useState<boolean | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [filters, setFilters] = useState<Filters>({
+    dateFrom: "",
+    dateTo: "",
+    userEmail: "",
+    projectId: "",
+    task: "",
+  });
 
   const checkOrganizer = async () => {
     try {
@@ -83,11 +105,32 @@ export default function StatusReport() {
     checkOrganizer();
   }, []);
 
+  const uniqueEmails = useMemo(() => [...new Set(records.map((r) => r.user_email))].sort(), [records]);
+  const uniqueProjects = useMemo(() => [...new Set(records.map((r) => r.project_id))].sort(), [records]);
+  const uniqueTasks = useMemo(() => [...new Set(records.map((r) => r.task))].sort(), [records]);
+
+  const filteredRecords = useMemo(() => {
+    return records.filter((r) => {
+      if (filters.dateFrom && r.date < filters.dateFrom) return false;
+      if (filters.dateTo && r.date > filters.dateTo) return false;
+      if (filters.userEmail && r.user_email !== filters.userEmail) return false;
+      if (filters.projectId && r.project_id !== filters.projectId) return false;
+      if (filters.task && r.task !== filters.task) return false;
+      return true;
+    });
+  }, [records, filters]);
+
+  const clearFilters = () => {
+    setFilters({ dateFrom: "", dateTo: "", userEmail: "", projectId: "", task: "" });
+  };
+
+  const hasActiveFilters = filters.dateFrom || filters.dateTo || filters.userEmail || filters.projectId || filters.task;
+
   const downloadCSV = () => {
-    if (records.length === 0) return;
+    if (filteredRecords.length === 0) return;
 
     const headers = ["User Email", "Date", "Project ID", "Task", "Image Count", "Note", "Logged At"];
-    const rows = records.map((r) => [
+    const rows = filteredRecords.map((r) => [
       r.user_email,
       r.date,
       r.project_id,
@@ -158,7 +201,7 @@ export default function StatusReport() {
             <RefreshCw className={`h-4 w-4 mr-2 ${loading ? "animate-spin" : ""}`} />
             Refresh
           </Button>
-          <Button onClick={downloadCSV} disabled={records.length === 0 || loading}>
+          <Button onClick={downloadCSV} disabled={filteredRecords.length === 0 || loading}>
             <Download className="h-4 w-4 mr-2" />
             Download CSV
           </Button>
@@ -167,6 +210,82 @@ export default function StatusReport() {
           </Button>
         </div>
       </div>
+
+      <Card className="p-4">
+        <div className="flex flex-wrap items-end gap-4">
+          <div className="flex flex-col gap-1">
+            <label className="text-sm text-muted-foreground">Date From</label>
+            <Input
+              type="date"
+              value={filters.dateFrom}
+              onChange={(e) => setFilters({ ...filters, dateFrom: e.target.value })}
+              className="w-40"
+            />
+          </div>
+          <div className="flex flex-col gap-1">
+            <label className="text-sm text-muted-foreground">Date To</label>
+            <Input
+              type="date"
+              value={filters.dateTo}
+              onChange={(e) => setFilters({ ...filters, dateTo: e.target.value })}
+              className="w-40"
+            />
+          </div>
+          <div className="flex flex-col gap-1">
+            <label className="text-sm text-muted-foreground">User Email</label>
+            <Select value={filters.userEmail} onValueChange={(val) => setFilters({ ...filters, userEmail: val === "all" ? "" : val })}>
+              <SelectTrigger className="w-52">
+                <SelectValue placeholder="All Users" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All Users</SelectItem>
+                {uniqueEmails.map((email) => (
+                  <SelectItem key={email} value={email}>{email}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="flex flex-col gap-1">
+            <label className="text-sm text-muted-foreground">Project ID</label>
+            <Select value={filters.projectId} onValueChange={(val) => setFilters({ ...filters, projectId: val === "all" ? "" : val })}>
+              <SelectTrigger className="w-44">
+                <SelectValue placeholder="All Projects" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All Projects</SelectItem>
+                {uniqueProjects.map((project) => (
+                  <SelectItem key={project} value={project}>{project}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="flex flex-col gap-1">
+            <label className="text-sm text-muted-foreground">Task</label>
+            <Select value={filters.task} onValueChange={(val) => setFilters({ ...filters, task: val === "all" ? "" : val })}>
+              <SelectTrigger className="w-36">
+                <SelectValue placeholder="All Tasks" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All Tasks</SelectItem>
+                {uniqueTasks.map((task) => (
+                  <SelectItem key={task} value={task}>{task}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          {hasActiveFilters && (
+            <Button variant="ghost" size="sm" onClick={clearFilters} className="text-muted-foreground">
+              <X className="h-4 w-4 mr-1" />
+              Clear Filters
+            </Button>
+          )}
+        </div>
+        {hasActiveFilters && (
+          <p className="text-sm text-muted-foreground mt-3">
+            Showing {filteredRecords.length} of {records.length} records
+          </p>
+        )}
+      </Card>
 
       <Card className="overflow-hidden">
         <div className="p-6 border-b bg-muted/50">
@@ -194,14 +313,14 @@ export default function StatusReport() {
                     Loading records...
                   </TableCell>
                 </TableRow>
-              ) : records.length === 0 ? (
-                <TableRow>
-                  <TableCell colSpan={7} className="h-24 text-center">
-                    No records found.
-                  </TableCell>
-                </TableRow>
-              ) : (
-                records.map((record) => (
+              ) : filteredRecords.length === 0 ? (
+                  <TableRow>
+                    <TableCell colSpan={7} className="h-24 text-center">
+                      No records found.
+                    </TableCell>
+                  </TableRow>
+                ) : (
+                  filteredRecords.map((record) => (
                   <TableRow key={record.id}>
                     <TableCell className="font-medium">{record.user_email}</TableCell>
                     <TableCell>{record.date}</TableCell>
