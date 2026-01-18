@@ -1,0 +1,6 @@
+# Python/Backend ignores
+backend/.venv/
+__pycache__/
+
+# VSCode ignores
+.vscode/

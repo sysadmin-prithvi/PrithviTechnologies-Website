@@ -17,7 +17,8 @@ export default function ResourcesPage() {
       category: "Tutorial",
       date: "2024-01-15",
       readTime: "8 min read",
-      image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=600&fit=crop"
+      image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=600&fit=crop",
+      href: "#"
     },
     {
       title: "How AI-Assisted Annotation Reduces Costs by 60%",
@@ -25,15 +26,8 @@ export default function ResourcesPage() {
       category: "Article",
       date: "2024-01-10",
       readTime: "6 min read",
-      image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=600&fit=crop"
-    },
-    {
-      title: "HIPAA Compliance for Medical Data Annotation",
-      excerpt: "Complete guide to maintaining compliance when annotating sensitive healthcare data.",
-      category: "Guide",
-      date: "2024-01-05",
-      readTime: "12 min read",
-      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop"
+      image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=600&fit=crop",
+      href: "/resources/ai-assisted-annotation-reduces-costs-60"
     },
     {
       title: "Video Annotation for Autonomous Vehicles: A Deep Dive",
@@ -41,7 +35,8 @@ export default function ResourcesPage() {
       category: "Technical",
       date: "2023-12-28",
       readTime: "10 min read",
-      image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800&h=600&fit=crop"
+      image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800&h=600&fit=crop",
+      href: "#"
     },
     {
       title: "Scaling Your Annotation Team: Lessons Learned",
@@ -49,7 +44,8 @@ export default function ResourcesPage() {
       category: "Case Study",
       date: "2023-12-20",
       readTime: "7 min read",
-      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop"
+      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
+      href: "#"
     },
     {
       title: "The Future of NLP: Trends in Text Annotation",
@@ -57,7 +53,8 @@ export default function ResourcesPage() {
       category: "Article",
       date: "2023-12-15",
       readTime: "9 min read",
-      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=600&fit=crop"
+      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=600&fit=crop",
+      href: "#"
     }
   ];
 
@@ -206,7 +203,7 @@ export default function ResourcesPage() {
                         </h3>
                         <p className="text-muted-foreground mb-4">{post.excerpt}</p>
                         <Button variant="ghost" className="group/btn" asChild>
-                          <Link href="#">
+                          <Link href={post.href}>
                             Read More
                             <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
                           </Link>

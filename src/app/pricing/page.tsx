@@ -18,16 +18,15 @@ export default function PricingPage() {
       name: "Starter",
       description: "Perfect for small teams and proof of concepts",
       icon: Zap,
-      monthlyPrice: 49,
-      annualPrice: 490,
+      monthlyPrice: 79,
+      annualPrice: 790,
       features: [
-        "Up to 5,000 annotations/month",
-        "5 team members",
+        "Up to 5,000 annotations/month†",
         "Core annotation tools",
         "Email support",
         "API access",
         "Basic analytics",
-        "Cloud storage (10GB)"
+        "Cloud storage (10GB)‡"
       ],
       cta: "Start Free Trial",
       highlighted: false
@@ -36,18 +35,17 @@ export default function PricingPage() {
       name: "Professional",
       description: "For growing teams with production workloads",
       icon: Building2,
-      monthlyPrice: 199,
-      annualPrice: 1990,
+      monthlyPrice: 399,
+      annualPrice: 3990,
       features: [
-        "Up to 50,000 annotations/month",
-        "Unlimited team members",
+        "Up to 50,000 annotations/month†",
         "All annotation tools",
         "Priority support",
         "Advanced API & webhooks",
         "Advanced analytics & reporting",
-        "Cloud storage (100GB)",
+        "Cloud storage (100GB)‡",
         "Custom templates",
-        "AI-assisted labeling",
+        "AI-assisted labeling§",
         "Quality assurance tools"
       ],
       cta: "Start Free Trial",
@@ -60,17 +58,16 @@ export default function PricingPage() {
       monthlyPrice: null,
       annualPrice: null,
       features: [
-        "Unlimited annotations",
-        "Unlimited team members",
+        "Unlimited annotations¶",
         "All Professional features",
-        "24/7 phone & email support",
+        "Priority support",
+        "Phone support",
         "Dedicated account manager",
         "Custom integrations",
         "On-premise deployment option",
-        "SSO & advanced security",
+        "Advanced security",
         "SLA guarantees",
         "Custom data residency",
-        "White-label options",
         "Custom ML model training"
       ],
       cta: "Contact Sales",
@@ -93,7 +90,6 @@ export default function PricingPage() {
     {
       category: "Team & Collaboration",
       features: [
-        { name: "Team Members", starter: "5", pro: "Unlimited", enterprise: "Unlimited" },
         { name: "Role-based Access", starter: true, pro: true, enterprise: true },
         { name: "Project Management", starter: "Basic", pro: "Advanced", enterprise: "Enterprise" },
         { name: "Real-time Collaboration", starter: false, pro: true, enterprise: true }
@@ -113,7 +109,6 @@ export default function PricingPage() {
       features: [
         { name: "Email Support", starter: true, pro: true, enterprise: true },
         { name: "Priority Support", starter: false, pro: true, enterprise: true },
-        { name: "24/7 Phone Support", starter: false, pro: false, enterprise: true },
         { name: "Dedicated Account Manager", starter: false, pro: false, enterprise: true },
         { name: "SLA Guarantees", starter: false, pro: false, enterprise: true }
       ]
@@ -133,7 +128,7 @@ export default function PricingPage() {
                 Simple, Transparent Pricing
               </h1>
               <p className="text-xl text-muted-foreground mb-10">
-                Choose the plan that fits your needs. All plans include a 14-day free trial.
+                Choose the plan that fits your needs. All plans include a free demo.
               </p>
               
               <div className="flex items-center justify-center gap-4 mb-12">
@@ -226,6 +221,15 @@ export default function PricingPage() {
                 </Card>
               ))}
             </div>
+
+            <div className="max-w-7xl mx-auto mt-8">
+              <div className="text-sm text-muted-foreground space-y-1">
+                <p>† Annotation limits include a fixed quota per month; additional usage is billed separately as per contract.</p>
+                <p>‡ Storage includes the stated quota per workspace; extra storage and egress may incur overage fees.</p>
+                <p>§ AI-assisted features and custom ML training may be subject to separate usage-based pricing.</p>
+                <p>¶ Fair use policy applies; extremely high volumes may require a custom contract.</p>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -315,10 +319,6 @@ export default function PricingPage() {
                     a: "Yes, you can upgrade or downgrade at any time. Changes take effect at the start of your next billing cycle."
                   },
                   {
-                    q: "What happens after my free trial?",
-                    a: "After 14 days, you'll be automatically enrolled in the plan you selected. Cancel anytime before the trial ends with no charge."
-                  },
-                  {
                     q: "Do you offer refunds?",
                     a: "Yes, we offer a 30-day money-back guarantee on all annual plans."
                   },
@@ -329,6 +329,10 @@ export default function PricingPage() {
                   {
                     q: "Are there any setup fees?",
                     a: "No setup fees for Starter and Professional plans. Enterprise plans may include implementation services."
+                  },
+                  {
+                    q: "What if the annotations are higher than specified in the plan?",
+                    a: "The annotations above the specified number will be charged based on an hourly rate."
                   }
                 ].map((faq, index) => (
                   <Card key={index} className="p-6">

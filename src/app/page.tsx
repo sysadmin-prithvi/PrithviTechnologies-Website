@@ -12,7 +12,7 @@ export default function Home() {
     {
       icon: Zap,
       title: "Lightning Fast",
-      description: "Reduce annotation time by 80% with AI-assisted labeling and smart automation workflows."
+      description: "Reduce annotation time by 60% with smart automation workflows."
     },
     {
       icon: Shield,
@@ -37,30 +37,24 @@ export default function Home() {
 
   const testimonials = [
     {
-      quote: "xequals.ai transformed our annotation workflow. We reduced costs by 60% while improving data quality.",
-      author: "Sarah Chen",
-      role: "Head of ML, TechCorp",
+      quote: "Prithvi Technologies (Now XEqualsAI) has become an invaluable partner in our Selector 180(TM) development journey, significantly improving our model performance and streamlining our development process.",
+      author: "Ole",
+      role: "Data Engineer, H2L Robotics",
       rating: 5
     },
     {
-      quote: "The platform's flexibility and API integration made it seamless to integrate with our existing ML pipeline.",
-      author: "Michael Rodriguez",
-      role: "CTO, DataFlow AI",
-      rating: 5
-    },
-    {
-      quote: "Best-in-class security and compliance features. Essential for our healthcare AI applications.",
-      author: "Dr. Emily Watson",
-      role: "Chief Data Officer, MedTech Solutions",
+      quote: "Prithvi Technologies (Now XEqualsAI) delivers exceptional annotation services with unmatched accuracy and responsiveness, consistently exceeding our expectations for tulips datasets.",
+      author: "Vania",
+      role: "Project Manager, H2L Robotics",
       rating: 5
     }
   ];
 
   const stats = [
-    { value: "50M+", label: "Annotations Completed" },
-    { value: "99.9%", label: "Accuracy Rate" },
-    { value: "500+", label: "Enterprise Clients" },
-    { value: "24/7", label: "Support Available" }
+    { value: "500K+", label: "Images and Frames Labeled" },
+    { value: "200K+", label: "Objects Annotated" },
+    { value: ">95.5%", label: "Accuracy with QC" },
+    { value: "695+", label: "Annotation Hours" }
   ];
 
   return (
@@ -85,20 +79,23 @@ export default function Home() {
               </h1>
               
               <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
-                Enterprise-grade annotation platform for image, video, text, and audio data. Scale your ML projects with precision and speed.
+                XEqualsAI transforms raw data into high-impact labeled assets, powered by robust infrastructure, advanced automation, and expert annotators—supporting your most ambitious AI projects.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-                <Button size="lg" className="text-lg h-14 px-8" asChild>
-                  <Link href="/contact">
-                    Start Free Trial
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Link>
-                </Button>
-                <Button size="lg" variant="outline" className="text-lg h-14 px-8" asChild>
-                  <Link href="/contact">Request Demo</Link>
-                </Button>
-              </div>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+                  <Button size="lg" className="text-lg h-14 px-8" asChild>
+                    <Link href="/contact">
+                      Start Free Trial
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Link>
+                  </Button>
+                  <Button size="lg" variant="outline" className="text-lg h-14 px-8" asChild>
+                    <Link href="/contact">Request Demo</Link>
+                  </Button>
+                  <Button size="lg" variant="ghost" className="text-lg h-14 px-8" asChild>
+                    <Link href="/annotation/login">Login</Link>
+                  </Button>
+                </div>
 
               {/* Stats */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto">
@@ -173,7 +170,7 @@ export default function Home() {
               <p className="text-xl text-muted-foreground">Join hundreds of companies transforming their ML workflows</p>
             </div>
             
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               {testimonials.map((testimonial, index) => (
                 <Card key={index} className="p-8 relative hover:shadow-lg transition-all">
                   <Quote className="h-10 w-10 text-primary/20 absolute top-4 right-4" />
@@ -235,14 +232,17 @@ export default function Home() {
             <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
               Start annotating with xequals.ai today. No credit card required.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="text-lg h-14 px-8" asChild>
-                <Link href="/contact">Start Free Trial</Link>
-              </Button>
-              <Button size="lg" variant="outline" className="text-lg h-14 px-8" asChild>
-                <Link href="/pricing">View Pricing</Link>
-              </Button>
-            </div>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" className="text-lg h-14 px-8" asChild>
+                  <Link href="/contact">Start Free Trial</Link>
+                </Button>
+                <Button size="lg" variant="outline" className="text-lg h-14 px-8" asChild>
+                  <Link href="/pricing">View Pricing</Link>
+                </Button>
+                <Button size="lg" variant="ghost" className="text-lg h-14 px-8" asChild>
+                  <Link href="/annotation/login">Login</Link>
+                </Button>
+              </div>
           </div>
         </section>
       </main>

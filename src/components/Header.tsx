@@ -38,6 +38,9 @@ export default function Header() {
                 {link.label}
               </Link>
             )}
+            <Button variant="outline" size="sm" asChild>
+              <Link href="/annotation/login">Login</Link>
+            </Button>
           </nav>
 
           <button
@@ -58,16 +61,19 @@ export default function Header() {
       <div className="md:hidden border-t border-border/40">
           <nav className="container mx-auto px-4 py-4 flex flex-col space-y-4">
             {navLinks.map((link) =>
-          <Link
-            key={link.href}
-            href={link.href}
-            className="text-muted-foreground hover:text-foreground transition-colors"
-            onClick={() => setMobileMenuOpen(false)}>
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              onClick={() => setMobileMenuOpen(false)}>
 
                 {link.label}
               </Link>
-          )}
-          </nav>
+            )}
+            <Button variant="outline" size="sm" asChild className="w-full mt-2">
+              <Link href="/annotation/login" onClick={() => setMobileMenuOpen(false)}>Login</Link>
+            </Button>
+            </nav>
         </div>
       }
     </header>);

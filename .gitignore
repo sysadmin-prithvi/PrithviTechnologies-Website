@@ -4,11 +4,12 @@ node_modules
 .pnp.js
 bun.lockb
 
+
 # Testing
 /coverage
 
 # Next.js
-/.next/
+.next/
 /out/
 
 # Production
@@ -48,6 +49,7 @@ yarn-error.log*
 *.launch
 .settings/
 *.sublime-workspace
+.env.local
 
 # OS
 Thumbs.db
@@ -57,3 +59,10 @@ ehthumbs.db
 yarn.lock
 pnpm-lock.yaml
 bun.lock
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Package manager
+package-lock.json

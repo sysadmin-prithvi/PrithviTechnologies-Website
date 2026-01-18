@@ -1,9 +1,17 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
+  "/annotation/(protected)/page": "app/annotation/(protected)/page.js",
+  "/annotation/(protected)/reports/page": "app/annotation/(protected)/reports/page.js",
+  "/annotation/login/page": "app/annotation/login/page.js",
+  "/api/annotation/daily-status/route": "app/api/annotation/daily-status/route.js",
+  "/api/annotation/reports/route": "app/api/annotation/reports/route.js",
+  "/api/auth/logout/route": "app/api/auth/logout/route.js",
+  "/api/auth/me/route": "app/api/auth/me/route.js",
+  "/api/auth/session/route": "app/api/auth/session/route.js",
+  "/careers/page": "app/careers/page.js",
   "/contact/page": "app/contact/page.js",
-  "/pricing/page": "app/pricing/page.js",
-  "/resources/page": "app/resources/page.js",
-  "/solutions/page": "app/solutions/page.js",
   "/page": "app/page.js",
-  "/platform/page": "app/platform/page.js"
+  "/platform/page": "app/platform/page.js",
+  "/pricing/page": "app/pricing/page.js",
+  "/resources/ai-assisted-annotation-reduces-costs-60/page": "app/resources/ai-assisted-annotation-reduces-costs-60/page.js",
+  "/resources/page": "app/resources/page.js"
 }

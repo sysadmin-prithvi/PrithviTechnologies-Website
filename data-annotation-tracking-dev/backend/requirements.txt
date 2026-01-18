@@ -1,0 +1,15 @@
+fastapi[all]
+openpyxl
+python-multipart
+uvicorn
+python-dotenv
+pydantic
+sqlalchemy
+databases
+psycopg2-binary
+
+python-jose[cryptography]
+passlib[bcrypt]
+PyJWT
+python-decouple
+alembic

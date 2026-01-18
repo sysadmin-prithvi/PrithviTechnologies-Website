@@ -119,25 +119,20 @@ export default function SolutionsPage() {
     {
       step: "2",
       title: "Task Configuration",
-      description: "Define annotation guidelines, create custom templates, and set quality thresholds"
+      description: "Define annotation guidelines, provide sample annotated data, create custom templates, and set quality thresholds"
     },
     {
-      step: "3",
-      title: "AI-Assisted Annotation",
-      description: "Our ML models pre-label data to accelerate the annotation process"
+    step: "3",
+    title: "Expert Human Review",
+    description: "Skilled annotators carefully label your data, focusing on edge cases and project-specific nuances."
     },
     {
-      step: "4",
-      title: "Human Review",
-      description: "Expert annotators verify and refine labels with precision"
+    step: "4",
+    title: "Multi‑Stage Quality Assurance",
+    description: "Independent QA passes and consensus checks ensure up to 99.9% label accuracy before approval."
     },
     {
       step: "5",
-      title: "Quality Assurance",
-      description: "Multi-stage QA process ensures 99.9% accuracy before delivery"
-    },
-    {
-      step: "6",
       title: "Export & Integration",
       description: "Download annotated data in any format or integrate via API"
     }
