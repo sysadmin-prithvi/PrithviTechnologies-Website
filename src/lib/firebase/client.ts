@@ -10,6 +10,7 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
+
 function getFirebaseClientApp() {
   const existing = getApps()[0];
   if (existing) return existing;
