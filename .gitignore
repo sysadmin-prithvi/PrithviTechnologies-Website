@@ -32,7 +32,7 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # Local env files
-# .env*.local # Removed by Orchids to allow .env files
+# .env*.local
 
 # Vercel
 .vercel
@@ -49,7 +49,7 @@ yarn-error.log*
 *.launch
 .settings/
 *.sublime-workspace
-# .env.local # Removed by Orchids to allow .env files
+# .env.local
 
 # OS
 Thumbs.db

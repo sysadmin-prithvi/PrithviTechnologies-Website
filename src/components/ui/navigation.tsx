@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 const navItems = [
@@ -27,11 +28,12 @@ export function Navigation() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-1">
-            <Link 
-              href="/" 
-              className="text-xl font-bold text-gray-900 hover:text-gray-700 transition-colors"
+            <Link
+              href="/"
+              className="flex items-center gap-2 hover:opacity-80 transition-opacity"
             >
-              Orchids
+              <Image src="/xequalsai_icon.svg" alt="XEqualsAI" width={32} height={32} className="rounded" />
+              <span className="text-xl font-bold text-gray-900">XEqualsAI</span>
             </Link>
           </div>
           <div className="flex items-center space-x-1 overflow-x-auto">
