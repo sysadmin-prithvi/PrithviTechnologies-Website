@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Github, Linkedin, Twitter } from "lucide-react";
 
 export default function Footer() {
@@ -8,9 +9,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center space-x-2 mb-4">
-              <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary">
-                <span className="text-primary-foreground font-bold text-xl font-mono">X</span>
-              </div>
+              <Image src="/xequalsai_icon.svg" alt="XEqualsAI" width={40} height={40} className="rounded-lg" />
               <span className="text-xl font-bold">xequals.ai</span>
             </Link>
             <p className="text-muted-foreground mb-6 max-w-sm">

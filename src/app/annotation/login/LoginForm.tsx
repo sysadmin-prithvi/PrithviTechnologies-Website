@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
@@ -36,10 +37,8 @@ export default function LoginForm() {
     <div className="w-full">
       <div className="flex justify-start mb-8">
         <Link href="/" className="flex items-center space-x-2">
-          <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary">
-            <span className="text-primary-foreground font-bold text-xl font-mono">X</span>
-          </div>
-          <span className="text-xl font-bold !whitespace-pre-line">XEqualsAI</span>
+          <Image src="/xequalsai_icon.svg" alt="XEqualsAI" width={40} height={40} className="rounded-lg" />
+          <span className="text-xl font-bold">XEqualsAI</span>
         </Link>
       </div>
 
