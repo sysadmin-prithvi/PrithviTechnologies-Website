@@ -1,5 +1,5 @@
-import { getApps, initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { getApps, initializeApp, type FirebaseApp } from "firebase/app";
+import { getAuth, type Auth } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -10,11 +10,22 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-function getFirebaseClientApp() {
+let _app: FirebaseApp | null = null;
+let _auth: Auth | null = null;
+
+function getFirebaseClientApp(): FirebaseApp {
+  if (_app) return _app;
   const existing = getApps()[0];
-  if (existing) return existing;
-  return initializeApp(firebaseConfig);
+  _app = existing ?? initializeApp(firebaseConfig);
+  return _app;
 }
 
-export const firebaseApp = getFirebaseClientApp();
-export const firebaseAuth = getAuth(firebaseApp);
+export function getFirebaseAuth(): Auth {
+  if (_auth) return _auth;
+  _auth = getAuth(getFirebaseClientApp());
+  return _auth;
+}
+
+// Keep backward-compatible lazy getters that only initialize on access in the browser.
+export const firebaseApp = typeof window !== "undefined" ? getFirebaseClientApp() : (null as unknown as FirebaseApp);
+export const firebaseAuth = typeof window !== "undefined" ? getFirebaseAuth() : (null as unknown as Auth);

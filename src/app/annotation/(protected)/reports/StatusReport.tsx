@@ -4,6 +4,8 @@ import { useEffect, useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { signOut } from "firebase/auth";
 import { firebaseAuth } from "@/lib/firebase/client";
+import { supabaseBrowser } from "@/lib/supabase/client";
+import { useAuth } from "@/lib/firebase/auth-context";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -52,8 +54,11 @@ type Filters = {
   task: string;
 };
 
+const ORGANIZER_EMAILS = (process.env.NEXT_PUBLIC_ORGANIZER_EMAILS ?? "").split(",").filter(Boolean);
+
 export default function StatusReport() {
   const router = useRouter();
+  const { user } = useAuth();
   const [records, setRecords] = useState<DailyStatusRow[]>([]);
   const [qualityChecks, setQualityChecks] = useState<QualityCheckRow[]>([]);
   const [isOrganizer, setIsOrganizer] = useState<boolean | null>(null);
@@ -67,33 +72,20 @@ export default function StatusReport() {
     task: "",
   });
 
-  const checkOrganizer = async () => {
-    try {
-      const res = await fetch("/api/auth/me");
-      const json = await res.json();
-      setIsOrganizer(json.isOrganizer);
-      if (json.isOrganizer) {
-        loadData();
-      } else {
-        setLoading(false);
-      }
-    } catch (err) {
-      setError("Failed to verify organizer status");
-      setLoading(false);
-    }
-  };
-
   const loadData = async () => {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch("/api/annotation/reports");
-      if (!res.ok) {
-        throw new Error("Failed to fetch reports");
-      }
-      const json = await res.json();
-      setRecords(json.data.records || []);
-      setQualityChecks(json.data.qualityChecks || []);
+      const sb = supabaseBrowser();
+
+      const [statusResult, qcResult] = await Promise.all([
+        sb.from("daily_status").select("*").order("date", { ascending: false }).order("created_at", { ascending: false }),
+        sb.from("problem_noted").select("*").order("created_at", { ascending: false }),
+      ]);
+
+      if (statusResult.error) throw new Error(statusResult.error.message);
+      setRecords((statusResult.data as DailyStatusRow[]) || []);
+      setQualityChecks((qcResult.data as QualityCheckRow[]) || []);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to load data");
     } finally {
@@ -102,8 +94,14 @@ export default function StatusReport() {
   };
 
   useEffect(() => {
-    checkOrganizer();
-  }, []);
+    const organizer = !!user?.email && ORGANIZER_EMAILS.includes(user.email);
+    setIsOrganizer(organizer);
+    if (organizer) {
+      loadData();
+    } else {
+      setLoading(false);
+    }
+  }, [user]);
 
   const uniqueEmails = useMemo(() => [...new Set(records.map((r) => r.user_email))].sort(), [records]);
   const uniqueProjects = useMemo(() => [...new Set(records.map((r) => r.project_id))].sort(), [records]);
@@ -157,13 +155,8 @@ export default function StatusReport() {
   };
 
   const logout = async () => {
-    try {
-      await fetch("/api/auth/logout", { method: "POST" });
-    } finally {
-      await signOut(firebaseAuth).catch(() => undefined);
-      router.replace("/annotation/login");
-      router.refresh();
-    }
+    await signOut(firebaseAuth).catch(() => undefined);
+    router.replace("/annotation/login");
   };
 
   if (!loading && isOrganizer === false) {

@@ -1,10 +1,12 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { signOut } from "firebase/auth";
 
 import { firebaseAuth } from "@/lib/firebase/client";
+import { supabaseBrowser } from "@/lib/supabase/client";
+import { useAuth } from "@/lib/firebase/auth-context";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -53,6 +55,7 @@ type FormState = {
 
 export default function DailyStatusDashboard({ userEmail, isOrganizer }: { userEmail: string; isOrganizer?: boolean }) {
   const router = useRouter();
+  const { user } = useAuth();
 
   const [filters, setFilters] = useState<Filters>({
     user_email: userEmail,
@@ -75,30 +78,26 @@ export default function DailyStatusDashboard({ userEmail, isOrganizer }: { userE
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
 
-  const queryString = useMemo(() => {
-    const params = new URLSearchParams();
-    if (filters.user_email) params.set("user_email", filters.user_email);
-    if (filters.date) params.set("date", filters.date);
-    if (filters.task) params.set("task", filters.task);
-    if (filters.project_id) params.set("project_id", filters.project_id);
-    return params.toString();
-  }, [filters]);
-
   const load = async () => {
     setError(null);
     setLoading(true);
     try {
-      const res = await fetch(`/api/annotation/daily-status?${queryString}`, {
-        method: "GET",
-      });
+      const sb = supabaseBrowser();
+      let query = sb
+        .from("daily_status")
+        .select("*")
+        .order("date", { ascending: false })
+        .order("created_at", { ascending: false })
+        .limit(200);
 
-      if (!res.ok) {
-        const payload = (await res.json().catch(() => null)) as { error?: string } | null;
-        throw new Error(payload?.error ?? "Failed to load records");
-      }
+      if (filters.user_email) query = query.eq("user_email", filters.user_email);
+      if (filters.date) query = query.eq("date", filters.date);
+      if (filters.task) query = query.eq("task", filters.task);
+      if (filters.project_id) query = query.eq("project_id", filters.project_id);
 
-      const payload = (await res.json()) as { data: DailyStatusRow[] };
-      setRows(payload.data ?? []);
+      const { data, error: sbError } = await query;
+      if (sbError) throw new Error(sbError.message);
+      setRows((data as DailyStatusRow[]) ?? []);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to load records");
       setRows([]);
@@ -120,22 +119,18 @@ export default function DailyStatusDashboard({ userEmail, isOrganizer }: { userE
     setSubmitting(true);
 
     try {
-      const res = await fetch("/api/annotation/daily-status", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          date: form.date,
-          project_id: form.project_id,
-          task: form.task,
-          image_count: Number(form.image_count),
-          note: form.note || null,
-        }),
+      const sb = supabaseBrowser();
+      const { error: sbError } = await sb.from("daily_status").insert({
+        user_uid: user?.uid ?? "",
+        user_email: userEmail,
+        date: form.date,
+        project_id: form.project_id,
+        task: form.task,
+        image_count: Number(form.image_count),
+        note: form.note || null,
       });
 
-      if (!res.ok) {
-        const payload = (await res.json().catch(() => null)) as { error?: string } | null;
-        throw new Error(payload?.error ?? "Failed to submit daily status");
-      }
+      if (sbError) throw new Error(sbError.message);
 
       setSuccess("Daily status submitted.");
       setForm((prev) => ({ ...prev, project_id: "", image_count: 0, note: "" }));
@@ -148,13 +143,8 @@ export default function DailyStatusDashboard({ userEmail, isOrganizer }: { userE
   };
 
   const logout = async () => {
-    try {
-      await fetch("/api/auth/logout", { method: "POST" });
-    } finally {
-      await signOut(firebaseAuth).catch(() => undefined);
-      router.replace("/annotation/login");
-      router.refresh();
-    }
+    await signOut(firebaseAuth).catch(() => undefined);
+    router.replace("/annotation/login");
   };
 
   return (

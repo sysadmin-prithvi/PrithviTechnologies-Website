@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { AuthProvider } from "@/lib/firebase/auth-context";
 
 export const metadata = {
   title: "Annotation Tracking",
@@ -7,7 +8,9 @@ export const metadata = {
 export default function AnnotationLayout({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-background">
-      <main className="container mx-auto px-4 py-10">{children}</main>
+      <main className="container mx-auto px-4 py-10">
+        <AuthProvider>{children}</AuthProvider>
+      </main>
     </div>
   );
 }

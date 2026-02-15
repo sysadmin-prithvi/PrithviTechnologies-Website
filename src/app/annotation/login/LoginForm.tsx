@@ -23,20 +23,7 @@ export default function LoginForm() {
     setLoading(true);
 
     try {
-      const cred = await signInWithEmailAndPassword(firebaseAuth, email, password);
-      const idToken = await cred.user.getIdToken();
-
-      const res = await fetch("/api/auth/session", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ idToken }),
-      });
-
-      if (!res.ok) {
-        const payload = (await res.json().catch(() => null)) as { error?: string } | null;
-        throw new Error(payload?.error ?? "Failed to create session");
-      }
-
+      await signInWithEmailAndPassword(firebaseAuth, email, password);
       router.replace("/annotation");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Login failed");

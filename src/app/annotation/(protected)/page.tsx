@@ -1,14 +1,16 @@
-import { getSessionUser } from "@/lib/firebase/session";
+"use client";
+
+import { useAuth } from "@/lib/firebase/auth-context";
 import DailyStatusDashboard from "./DailyStatusDashboard";
 
-export default async function AnnotationDashboardPage() {
-  const user = await getSessionUser();
+const ORGANIZER_EMAILS = (process.env.NEXT_PUBLIC_ORGANIZER_EMAILS ?? "").split(",").filter(Boolean);
 
-  // ProtectedLayout already redirects, but keep this for type safety.
+export default function AnnotationDashboardPage() {
+  const { user } = useAuth();
+
   if (!user) return null;
 
-  const organizerEmails = process.env.ORGANIZER_EMAILS?.split(",") || [];
-  const isOrganizer = !!user.email && organizerEmails.includes(user.email);
+  const isOrganizer = !!user.email && ORGANIZER_EMAILS.includes(user.email);
 
   return <DailyStatusDashboard userEmail={user.email ?? ""} isOrganizer={isOrganizer} />;
 }
