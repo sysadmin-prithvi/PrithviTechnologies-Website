@@ -206,7 +206,7 @@ export default function ContactPage() {
                       </Link>
                     </Button>
                     <Button asChild variant="outline" className="w-full">
-                      <Link href="https://xequals-ai.com/xequals-ai.com">
+                      <Link href="https://xequals-ai.com/resources/">
                         Visit Guides & Tutorials
                       </Link>
                     </Button>
