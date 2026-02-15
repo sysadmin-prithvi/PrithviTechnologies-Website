@@ -12,13 +12,22 @@ import { BookOpen, FileText, Download, Search, Calendar, ArrowRight, Award } fro
 export default function ResourcesPage() {
   const blogPosts = [
     {
+      title: "How Real-Time ML Pipelines Accelerate Model Performance by 75%",
+      excerpt: "Unlock breakthrough performance with streaming data pipelines, continuous model updates, and millisecond inference.",
+      category: "Technical",
+      date: "2024-02-15",
+      readTime: "12 min read",
+      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=600&fit=crop",
+      href: "/resources/real-time-ml-pipelines-accelerate-performance-75"
+    },
+    {
       title: "Best Practices for Image Annotation in Computer Vision",
       excerpt: "Learn the proven techniques for high-quality image labeling that improves model accuracy.",
       category: "Tutorial",
       date: "2024-01-15",
       readTime: "8 min read",
       image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=600&fit=crop",
-      href: "#"
+      href: "/resources/best-practices-image-annotation-computer-vision"
     },
     {
       title: "How AI-Assisted Annotation Reduces Costs by 60%",
@@ -36,7 +45,7 @@ export default function ResourcesPage() {
       date: "2023-12-28",
       readTime: "10 min read",
       image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800&h=600&fit=crop",
-      href: "#"
+      href: "/resources/video-annotation-autonomous-vehicles-deep-dive"
     },
     {
       title: "Scaling Your Annotation Team: Lessons Learned",
@@ -45,7 +54,7 @@ export default function ResourcesPage() {
       date: "2023-12-20",
       readTime: "7 min read",
       image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
-      href: "#"
+      href: "/resources/scaling-annotation-team-lessons-learned"
     },
     {
       title: "The Future of NLP: Trends in Text Annotation",
@@ -54,31 +63,18 @@ export default function ResourcesPage() {
       date: "2023-12-15",
       readTime: "9 min read",
       image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=600&fit=crop",
-      href: "#"
+      href: "/resources/future-nlp-trends-text-annotation"
     }
   ];
 
   const caseStudies = [
     {
-      company: "HealthTech AI",
-      industry: "Healthcare",
-      title: "Reducing Radiology Annotation Time by 75%",
-      results: "50K images annotated, 99.8% accuracy, 3-week delivery",
-      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop"
-    },
-    {
-      company: "AutoDrive Systems",
-      industry: "Autonomous Vehicles",
-      title: "Scaling Object Detection for Self-Driving Cars",
-      results: "2M frames annotated, 15 object classes, Real-time pipeline",
-      image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=600&h=400&fit=crop"
-    },
-    {
-      company: "AgriVision",
-      industry: "Agriculture",
-      title: "Crop Disease Detection with 98% Accuracy",
-      results: "100K drone images, 25 disease types, 95% cost reduction",
-      image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600&h=400&fit=crop"
+      company: "Trikaya Manufacturing",
+      industry: "Manufacturing",
+      title: "Professional Data Pipeline & Annotation Framework for Defect Detection",
+      results: "60K+ images annotated, 95%+ model accuracy, 0.90+ inter-rater reliability",
+      image: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=600&h=400&fit=crop",
+      href: "/resources/case-study-trikaya-manufacturing"
     }
   ];
 
@@ -235,7 +231,7 @@ export default function ResourcesPage() {
                         <h3 className="text-xl font-semibold mb-2">{study.title}</h3>
                         <p className="text-muted-foreground mb-4">{study.results}</p>
                         <Button variant="ghost" asChild>
-                          <Link href="#">
+                          <Link href={study.href || "#"}>
                             View Case Study
                             <ArrowRight className="ml-2 h-4 w-4" />
                           </Link>

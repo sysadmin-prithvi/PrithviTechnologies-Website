@@ -1,32 +1,51 @@
-  import Link from "next/link";
-  import { Metadata } from "next";
-  import Header from "@/components/Header";
-  import Footer from "@/components/Footer";
-  import { Button } from "@/components/ui/button";
-  import { Card } from "@/components/ui/card";
-  import { CheckCircle2, Cpu, Rocket, PiggyBank, FileText, Quote, Star, Lock } from "lucide-react";
+"use client";
 
-  export const metadata: Metadata = {
-    title: "How AI‑Assisted Annotation Reduces Costs by 60% | xequals.ai",
-    description:
-      "Discover how pre‑labeling, active learning, and human‑in‑the‑loop workflows cut annotation costs by up to 60% while accelerating delivery.",
-    alternates: { canonical: "/resources/ai-assisted-annotation-reduces-costs-60" },
-  };
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { CheckCircle2, Cpu, Rocket, PiggyBank, FileText, Quote, Star, Lock } from "lucide-react";
 
-  const toc = [
-    { id: "intro", label: "Introduction" },
-    { id: "cost-problem", label: "The Cost Problem" },
-    { id: "prelabeling", label: "Machine Learning for Pre‑Labeling" },
-    { id: "hitl", label: "Human‑in‑the‑Loop (HITL)" },
-    { id: "quantifying", label: "Quantifying Cost Reduction" },
-    { id: "workflow", label: "Workflow Optimization" },
-    { id: "tools", label: "Tools & Platforms" },
-    { id: "results", label: "Real‑World Results" },
-    { id: "conclusion", label: "Conclusion & CTA" },
-    { id: "faq", label: "FAQ & Resources" },
-  ];
+const toc = [
+  { id: "intro", label: "Introduction" },
+  { id: "cost-problem", label: "The Cost Problem in Traditional Annotation" },
+  { id: "prelabeling", label: "Machine Learning for Pre‑Labeling" },
+  { id: "hitl", label: "Human‑in‑the‑Loop for Accuracy" },
+  { id: "quantifying", label: "Quantifying Cost Reduction" },
+  { id: "workflow", label: "Workflow Optimization Strategies" },
+  { id: "tools", label: "Tools and Platform Examples" },
+  { id: "results", label: "Real‑World Results" },
+  { id: "conclusion", label: "Conclusion: Accelerate Your Annotation Workflow" },
+  { id: "faq", label: "FAQ & Resource Links" },
+];
 
-  export default function CostReductionArticle() {
+export default function CostReductionArticle() {
+  const [activeSection, setActiveSection] = useState("intro");
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        rootMargin: "-100px 0px -66%",
+        threshold: 0,
+      }
+    );
+
+    toc.forEach(({ id }) => {
+      const element = document.getElementById(id);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, []);
     return (
       <div className="flex min-h-screen flex-col">
         <Header />
@@ -73,7 +92,16 @@
               <ul className="flex gap-4 py-3 text-sm">
                 {toc.map((item) => (
                   <li key={item.id}>
-                    <a className="text-muted-foreground hover:text-primary" href={`#${item.id}`}>{item.label}</a>
+                    <a
+                      className={`transition-colors ${
+                        activeSection === item.id
+                          ? "text-primary font-semibold"
+                          : "text-muted-foreground hover:text-primary"
+                      }`}
+                      href={`#${item.id}`}
+                    >
+                      {item.label}
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -90,7 +118,16 @@
                     <ul className="space-y-2 text-sm">
                       {toc.map((item) => (
                         <li key={item.id}>
-                          <a className="text-muted-foreground hover:text-primary" href={`#${item.id}`}>{item.label}</a>
+                          <a
+                            className={`block transition-colors ${
+                              activeSection === item.id
+                                ? "text-primary font-semibold"
+                                : "text-muted-foreground hover:text-primary"
+                            }`}
+                            href={`#${item.id}`}
+                          >
+                            {item.label}
+                          </a>
                         </li>
                       ))}
                     </ul>
