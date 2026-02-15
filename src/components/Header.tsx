@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
@@ -22,10 +23,8 @@ export default function Header() {
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
-            <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary">
-              <span className="text-primary-foreground font-bold text-xl font-mono">X</span>
-            </div>
-            <span className="text-xl font-bold !whitespace-pre-line">XEqualsAI</span>
+            <Image src="/xequalsai_icon.svg" alt="XEqualsAI" width={40} height={40} className="rounded-lg" />
+            <span className="text-xl font-bold">XEqualsAI</span>
           </Link>
 
           <nav className="hidden md:flex items-center space-x-6 text-sm">
