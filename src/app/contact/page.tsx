@@ -89,7 +89,7 @@ export default function ContactPage() {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      
+
       <main className="flex-1">
         {/* Hero Section */}
         <section className="py-20 md:py-32 bg-gradient-to-b from-primary/10 to-transparent">
@@ -123,17 +123,17 @@ export default function ContactPage() {
                       <Input id="lastName" placeholder="Doe" className="mt-2" />
                     </div>
                   </div>
-                  
+
                   <div>
                     <Label htmlFor="email">Email</Label>
                     <Input id="email" type="email" placeholder="john@company.com" className="mt-2" />
                   </div>
-                  
+
                   <div>
                     <Label htmlFor="company">Company</Label>
                     <Input id="company" placeholder="Your Company" className="mt-2" />
                   </div>
-                  
+
                   <div>
                     <Label htmlFor="inquiry">Type of Inquiry</Label>
                     <Select>
@@ -149,16 +149,16 @@ export default function ContactPage() {
                       </SelectContent>
                     </Select>
                   </div>
-                  
+
                   <div>
                     <Label htmlFor="message">Message</Label>
-                    <Textarea 
-                      id="message" 
+                    <Textarea
+                      id="message"
                       placeholder="Tell us about your project or question..."
                       className="mt-2 min-h-32"
                     />
                   </div>
-                  
+
                   <Button size="lg" className="w-full">
                     <Send className="mr-2 h-5 w-5" />
                     Send Message
@@ -174,7 +174,7 @@ export default function ContactPage() {
                     Reach out through any of these channels. We're always happy to help!
                   </p>
                 </div>
-                
+
                 <div className="grid gap-6">
                   {contactMethods.map((method, index) => (
                     <Card key={index} className="p-6 hover:border-primary/50 transition-all">
@@ -223,7 +223,7 @@ export default function ContactPage() {
             <div className="max-w-4xl mx-auto text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-6">About xequals.ai</h2>
               <p className="text-xl text-muted-foreground">
-                We're on a mission to make high-quality data annotation accessible to every ML team. 
+                We're on a mission to make high-quality data annotation accessible to every ML team.
                 Founded by AI researchers and engineers, we understand the challenges of building production ML systems.
               </p>
             </div>
@@ -242,7 +242,7 @@ export default function ContactPage() {
         </section>
 
         {/* Team */}
-        <section className="py-20">
+        {/* <section className="py-20">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-4">Meet Our Leadership</h2>
@@ -270,10 +270,10 @@ export default function ContactPage() {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Company Timeline */}
-        <section className="py-20 bg-card/50">
+        {/* <section className="py-20 bg-card/50">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-4">Our Journey</h2>
@@ -298,7 +298,7 @@ export default function ContactPage() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* CTA Section */}
         <section className="py-20 bg-gradient-to-r from-primary/10 via-primary/5 to-transparent">
