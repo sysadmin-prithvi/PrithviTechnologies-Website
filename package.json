@@ -49,7 +49,7 @@
         "@tsparticles/engine": "^3.8.1",
         "@tsparticles/react": "^3.0.0",
         "@tsparticles/slim": "^3.8.1",
-        "atmn": "^0.0.24",
+        "atmn": "^1.1.15",
         "autumn-js": "^0.1.40",
         "bcrypt": "^6.0.0",
         "better-auth": "^1.3.17",
