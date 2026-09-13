@@ -9,6 +9,13 @@ updates:
       time: "08:00"
       timezone: "Etc/UTC"
     open-pull-requests-limit: 10
+    ignore:
+      # eslint-config-next 15.x only accepts peer eslint ^7 || ^8 || ^9.
+      # Bumping eslint to 10 breaks `npm ci` in deploy-gh-pages (ERESOLVE).
+      # Remove this once eslint-config-next/next is upgraded to a release
+      # whose peer range includes eslint 10 (next 16+ / eslint-config-next 16+).
+      - dependency-name: "eslint"
+        versions: [">= 10.0.0"]
 
   # Maintain dependencies for GitHub Actions
   - package-ecosystem: "github-actions"
